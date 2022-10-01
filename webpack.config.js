@@ -44,8 +44,8 @@ module.exports = {
       directory: path.resolve(__dirname, '../client/images'),
       publicPath: '/images',
     },
-    proxy: {
-      '/': 'http://localhost:3000',
-    }
+    // proxy: {
+    //   '/': 'http://localhost:3000',
+    // }
   },
 }
