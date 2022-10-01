@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
     "build": "export NODE_ENV=production && webpack",
-    "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server --mode development --open --hot\"",
-    "devReact" : "webpack-dev-server --mode development --open --hot"
+    "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server --mode development --open --hot\""
   },
   "repository": {
     "type": "git",
