@@ -1,0 +1,58 @@
+{
+  "name": "welcome-home-friend",
+  "version": "1.0.0",
+  "description": "https://files.slack.com/files-tmb/T03J5915P2R-F03NR8JUH7C-702b35ca3a/image_from_ios_720.jpg https://files.slack.com/files-pri/T03J5915P2R-F03SGNWJ17E/296113205_3301924603400033_35698748927410512_n.jpg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js",
+    "build": "export NODE_ENV=production && webpack",
+    "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server --mode development --open --hot\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StarNosedMoleWCRI53/welcome-home-friend.git"
+  },
+  "keywords": [],
+  "author": "Akash, Cesar, Krisette, Kristen, Tim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StarNosedMoleWCRI53/welcome-home-friend/issues"
+  },
+  "homepage": "https://github.com/StarNosedMoleWCRI53/welcome-home-friend#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
+    "bcrypt": "^5.0.1",
+    "concurrently": "^7.4.0",
+    "cookie-parser": "^1.4.6",
+    "css-loader": "^6.7.1",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8",
+    "express-session": "^1.17.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.20",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.1.8",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.7",
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "pg": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "sass": "^1.55.0"
+  }
+}
