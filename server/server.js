@@ -2,24 +2,15 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const db = require('./db') // grabbing db from inside the other folders ... might not be needed here?
 
-console.log(path.join(__dirname + "../../.env"))
-
-// requiring dotenv file in .env, can now grab variables using process.env
-require('dotenv').config()
-console.log(process.env.CONNECTION_STRING);
-// from dotenv, connectionString will be the URL for database
-const connectionString = process.env.CONNECTION_STRING;
-// using pg-promise, we now connect to the db and db is now database
-const pgp = require("pg-promise")()
-const db = pgp(connectionString)
-
+// app.use(express.json());   on line 36!
 
 
 
 
 // This section is for grabbing data from server to SQL database //
-var pg = require('pg');
+// var pg = require('pg');
 //or native libpq bindings
 //var pg = require('pg').native
 
@@ -39,7 +30,33 @@ var pg = require('pg');
 //   });
 // });
 
+/**
+ * handle parsing request body
+ */
+ app.use(express.json());
+//  app.use(express.urlencoded({ extended: true }));
+
+ /**
+  * define route handlers
+  */
+  app.use('/', apiRouter);
+
+ // catch-all route handler for any requests to an unknown route
+ app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+
+//global error handler
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+});
+
 app.listen(PORT, () => {
-  console.log("Server is running...")
+  console.log(`Server is running at http://localhost${PORT}...`)
 })
 module.exports = app;
