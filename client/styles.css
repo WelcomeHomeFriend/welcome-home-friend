@@ -39,7 +39,7 @@
 }
 
 .create-post {
-  background-color: blue;
+  background-color: rgb(255, 179, 245);
   border: 1px solid black
 }
 
@@ -56,12 +56,17 @@
   border: 1px solid black
 }
 
+.center-text {
+  text-align: center;
+}
+
 .post-list {
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5px;
   background-color: lightpink;
-  border: 1px solid black
+  border: 1px solid black;
+  margin: 1rem;
 }
 
 .post {
