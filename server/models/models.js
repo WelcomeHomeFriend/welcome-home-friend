@@ -1,6 +1,6 @@
 //IMPORTS
 // using pg-promise, we now connect to the db and db is now database
-const pgp = require("pg-promise")()
+// const pgp = require("pg-promise")()
 // requiring dotenv file in .env, can now grab variables using process.env
 require('dotenv').config()
 console.log(process.env.CONNECTION_STRING);
@@ -8,9 +8,20 @@ console.log(process.env.CONNECTION_STRING);
 
 // from dotenv, connectionString will be the URL for database
 const connectionString = process.env.CONNECTION_STRING;
-const db = pgp(connectionString)
+// const db = pgp(connectionString)
 
 
+const {Pool} = require('pg')
+const pool = new Pool({
+  connectionString: connectionString
+})
+
+module.exports = {
+  query: (text, params, callback) => {
+    console.log('executed query', text);
+    return pool.query(text, params, callback);
+  }
+}
 // NOTES BELOW ON HOW TO GRAB DATA GENERALLY (NO DOTENV)
 // var pg = require('pg');
 // //or native libpq bindings
@@ -32,4 +43,4 @@ const db = pgp(connectionString)
 //   });
 // });
 
-module.exports = db;
+// module.exports = db;

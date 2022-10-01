@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const db = require('./db') // grabbing db from inside the other folders ... might not be needed here?
+// const db = require('./db') // grabbing db from inside the other folders ... might not be needed here?
+
+const apiRouter = require('./routes/api');
 
 // app.use(express.json());   on line 36!
 
