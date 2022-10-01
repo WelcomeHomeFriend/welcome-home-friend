@@ -10,7 +10,7 @@ router.get('/', petController.getPet, (req, res) => {
 });
 
 
-router.post('/pet', petController.getPet, (req, res) => {
+router.post('/pet', petController.addPet, (req, res) => {
     res.status(200).json(res.locals.people) // place holders
 });
 
