@@ -10,7 +10,7 @@ const PostContainer = () => {
     
     return (
         <div className="post-container">
-          <h1 className="center-text">Lost to Found</h1>
+          <h1 className="center-text">Lost Friends</h1>
             <div className="post-list">
                 {/* Array of Post Components */}
                 {petArr.map((el, i) => <Post key={i} petObj={el} />)}
