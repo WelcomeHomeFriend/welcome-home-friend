@@ -48,7 +48,16 @@ body {
 
 .create-post {
   background-color: rgb(255, 179, 245);
-  border: 1px solid black
+  border: 1px solid black;
+  padding: 0 1rem;
+}
+
+.create-post h3 {
+  text-align: center;
+}
+
+.create-post-text-field {
+  margin: 0.5rem;
 }
 
 .featured-pets {
