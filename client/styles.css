@@ -1,3 +1,11 @@
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
 .content-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -45,10 +53,33 @@
 
 .featured-pets {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1fr;
   gap: 5px;
   background-color: lightblue;
   border: 1px solid black
+}
+
+.featured-pet-title {
+  grid-row: auto;
+  text-align: center;
+  height: 1rem;
+}
+
+.featured-pet-details {
+  grid-row: auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.featured-pet-details img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.featured-pet-details h2 {
+  text-align: center;
 }
 
 .post-container {
