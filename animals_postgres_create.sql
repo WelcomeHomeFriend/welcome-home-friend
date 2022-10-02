@@ -14,10 +14,11 @@ CREATE TABLE public.animals (
 	"pet_name" varchar NOT NULL,
 	"owner" varchar,
 	"address" varchar,
-	"skin_color" varchar,
 	"eye_color" varchar,
 	"gender" varchar,
-	"animal_id" bigint,
+	"image_url" varchar,
+	"fur_color" varchar,
+	"last_found" varchar,
 
 	CONSTRAINT "animals_pk" PRIMARY KEY ("_id")
 ) WITH (
