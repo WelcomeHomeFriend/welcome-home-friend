@@ -56,8 +56,26 @@ body {
   text-align: center;
 }
 
+.create-post-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 90%;
+}
+
 .create-post-text-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.create-post-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0.5rem;
+  width: 100%;
 }
 
 .featured-pets {
