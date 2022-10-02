@@ -1,5 +1,7 @@
 import React from 'react';
 import { usePetContext, usePetUpdateContext } from '../contexts/PostContext.jsx';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const CreatePost = () => {
   const addPetArr = usePetUpdateContext();
@@ -8,30 +10,87 @@ const CreatePost = () => {
 
   //NOTE: when invoking inputDev, make sure the second 'key' paramter matches a dataKey
   //data keys are for the properties of the big object returned when we setContext
+
+  // dividing inputDev into 2 funcs: one for text field, one for textareas
+  // originally was passing in className to change css but i think with materialUI it's better to just use the sx prop
   const inputDiv = (label, key) => { return (
-    <div>
-      <label>{label}</label>
-      <input id={key} type='text'></input>
+    <div className="create-post-text-field">
+      <TextField
+        id={key}
+        label={label}
+        variant="outlined"
+        size="small"
+        sx={{
+        '& label.Mui-focused': {
+          color: '#333',
+        },
+        '& .MuiInput-underline:after': {
+          borderBottomColor: '#333',
+        },
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: 'gray',
+          },
+          '&:hover fieldset': {
+            borderColor: 'white',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: '#333',
+          },
+        },
+        }}
+        />
+    </div>
+  )};
+
+  const textAreaDiv = (label, key) => { return (
+    <div className="create-post-text-field">
+      <TextField
+        id={key}
+        label={label}
+        variant="outlined"
+        size="small"
+        multiline rows={2}
+        sx={{
+          '& label.Mui-focused': {
+            color: '#333',
+          },
+          '& .MuiInput-underline:after': {
+            borderBottomColor: '#333',
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: 'gray',
+            },
+            '&:hover fieldset': {
+              borderColor: 'white',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#333',
+            },
+          },
+          }}
+        />
     </div>
   )};
 
   return (
     <div className="create-post">
-        <h2>Create a Post</h2>
+        <h3>Create a Post</h3>
 
-        <h3>Your Information</h3>
+        <h4>Your Information</h4>
         {inputDiv('Your Name:', 'owner')}
-        {inputDiv('Address:', 'address')}
+        {textAreaDiv('Address:', 'address')}
         {inputDiv('Number:', 'phone_number')}
         
-        <h3>Pet's Information</h3>
+        <h4>Pet's Information</h4>
         {inputDiv('Name:', 'pet_name')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
         {inputDiv('Fur Color:', 'fur_color')}
-        {inputDiv('Last Seen:', 'last_found')}
-        {inputDiv('Additional Comments:', 'comments')}
-      <button onClick={() => addPetArr(petData())}>Submit</button>
+        {textAreaDiv('Last Seen:', 'last_found')}
+        {textAreaDiv('Additional Comments:', 'comments')}
+      <Button onClick={() => addPetArr(petData())}>Submit</Button>
     </div>
   )
 }
