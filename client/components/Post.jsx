@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from "./PostModal.jsx"
 
 const Post = ( {petObj} ) => {
   //petObj will be a giant object with key value pairs of:
@@ -13,9 +14,7 @@ const Post = ( {petObj} ) => {
       <p>Has {petObj.eye_color} colored eyes</p>
       <p>Was last seen on/at? {petObj.last_found}</p>
       <p>Owner is:{petObj.owner}</p>
-      <p>Contact owner at:{petObj.phone_number}</p>
-      <p>Home is:{petObj.address}</p>
-      <p>Additional Info:{petObj.commenets}</p>
+      <Modal petObj={petObj}></Modal>
     </div>
   )
 }
