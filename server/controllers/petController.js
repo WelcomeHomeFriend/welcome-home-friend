@@ -38,4 +38,25 @@ petController.addPet = (req, res, next) => {
     })
 };
 
+petController.foundPet = (req, res, next) => {
+  // getting req.body data of all input
+  // name and breed required
+  const {_id} = req.body; 
+  console.log(_id);
+  
+  const insertChar ="DELETE from animals WHERE _id IN ($1) RETURNING *;"
+  const value = [_id];
+
+  db.query(insertChar, value, (err, result)=>{
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("result", result.rows);
+      // if we want to return single row inserted, uncomment below
+      res.locals.newPet = result.rows;
+      return next();
+      }
+    })
+};
+
 module.exports = petController;

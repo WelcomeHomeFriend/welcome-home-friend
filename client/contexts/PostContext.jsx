@@ -41,6 +41,15 @@ export function PetDataProvider({children}) {
 
   function addPetData(newPetObj) {
     setPetData(oldState => {
+      if (newPetObj.hasOwnProperty('DELETEID')) {
+        //Logic to remove the object with this id from our state
+        let newState = [...oldState]
+        newState = newState.filter(element => {
+          if (element._id === newPetObj.DELETEID) return false
+          return true;
+        })
+        return newState;
+      }
       if (Array.isArray(newPetObj)) return [...oldState, ...newPetObj]
       return [...oldState, newPetObj]
     })
