@@ -4,18 +4,18 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
 
 .content-container {
+  background-color: #FFBE7BFF;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  column-gap: 10px;
-  border: 1px solid orange;
 }
 
 .navbar-container {
-  background-color: rgb(255, 203, 144);
-  border: 1px solid black;
+  background-image: linear-gradient(to right, #FFA351FF, #EED971FF, #FFA351FF);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,13 +24,12 @@ body {
 }
 
 #login-button {
-  background-color: rgb(192, 113, 29);
-  color: white;
-  border: 1px solid black;
+  background-color: #EED971FF;
+  color: black;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  box-shadow:rgb(192, 113, 29) 1px 1px 1px;
+  box-shadow: black 1px 1px 1px;
 }
 
 #login-button:hover {
@@ -39,16 +38,13 @@ body {
 }
 
 .sidebar-container {
+  background-color: #FFBE7BFF;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  gap: 5px;
-  background-color: green;
-  border: 1px solid black
 }
 
 .create-post {
-  background-color: rgb(255, 179, 245);
-  border: 1px solid black;
+  background-color: #FFBE7BFF;
   padding: 0 1rem;
 }
 
@@ -79,30 +75,33 @@ body {
 }
 
 .featured-pets {
-  display: grid;
-  grid-template-rows: 0.2fr 1fr 1fr;
-  gap: 5px;
-  background-color: lightblue;
-  border: 1px solid black
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* grid-template-rows: 0.2fr 1fr 1fr; */
+  background-color: #FFBE7BFF;
 }
 
 .featured-pet-title {
-  grid-row: auto;
   text-align: center;
   height: 1rem;
 }
 
 .featured-pet-details {
-  grid-row: auto;
+  margin-top: 20px;
+  width: 85%;
+  background-color: #F2B67C;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem;
+  text-align: center;
 }
 
 .featured-pet-details img {
   width: 100%;
   height: 100%;
-  border: 1px solid black;
 }
 
 .featured-pet-details h2 {
@@ -110,8 +109,7 @@ body {
 }
 
 .post-container {
-  background-color: lightgreen;
-  border: 1px solid black
+  background-color: #FFBE7BFF;
 }
 
 .center-text {
@@ -121,12 +119,51 @@ body {
 .post-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
-  background-color: lightpink;
-  border: 1px solid black;
+  gap: 10px;
+  background: url('https://www.tilingtextures.com/wp-content/uploads/2018/12/0074-512x512.jpg');
   margin: 1rem;
+  padding: 1rem;
+  border: 10px outset rgb(239, 222, 202);
+  border-radius: 5px;
+  box-shadow: 0px 1px 10px 1px rgb(117, 117, 117);
 }
 
-.post {
-  background-color: coral;
+.post { 
+  background-color:#EED971FF;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(73, 73, 73, 0.5);
+}
+
+.header4 {
+  text-align: center;
+}
+
+.petName {
+ font-size: 20px; 
+}
+
+.lost-pet-pic {
+  height: 120px;
+  width: auto;
+  border: 1px solid black;
+}
+
+.petPic{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pushPin {
+  height: 30px;
+  width: auto;
+}
+
+.info {
+  text-align: center;
+}
+
+#modal-modal-description{
+  background-color: #FFBE7BFF;
 }

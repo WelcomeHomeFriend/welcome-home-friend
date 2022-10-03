@@ -10,7 +10,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: '#FFBE7BFF',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -32,12 +32,12 @@ export default function BasicModal({ petObj }) {
       >
         <Box sx={style}>
           <Typography style ={{textAlign: 'center'}} id="modal-modal-title" variant="h6" component="h2">
-            Help Find {petObj.pet_name}!
+            Help Find <b>{petObj.pet_name.toUpperCase()}</b>!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <p>Contact owner at:{petObj.phone_number}</p>
-          <p>Owner Address is:{petObj.address}</p>
-          <p>Additional Comments:{petObj.comments}</p>
+          <p>Contact owner at: <b>{petObj.phone_number.toUpperCase()}</b></p>
+          <p>Owner Address is: <b>{petObj.address.toUpperCase()}</b></p>
+          <p>Additional Comments: <b>{petObj.comments.toUpperCase()}</b></p>
           </Typography>
         </Box>
       </Modal>

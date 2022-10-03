@@ -3,30 +3,27 @@ import kobe from '../images/kobe.jpg';
 import jinx from '../images/jinx.jpg';
 
 const FeaturedPets = () => {
+
+  function foundDiv(name, imgSrc, description = '') {
+    return (
+        <div className="featured-pet-details">
+          <h2 className="featured-pet-name"><b>{name.toUpperCase()}</b></h2>
+          <div style={{height:'100', width:'80%'}}>
+            <img className="petPic" src={imgSrc}/>
+          </div>
+          <p className='featured-pet-description'>{description}</p>
+        </div>
+    )
+  }
+
   return (
     <div className="featured-pets">
-      {/* Create a div for 2 pets showing PetDetails */}
-      <div className="featured-pet-title">
-      <h1>Featured Pets</h1>
-      </div>
-      <div className="featured-pet-details">
-        <div className="pet-image">
-        <img src={kobe} alt="Kobe" width="100px" />
-        </div>
-        <div className="featured-pet-info">
-          <h2>Kobe</h2>
-        </div>
-      </div>
-      <div className="featured-pet-details">
-        <div className="featured-pet-image">
-        <img src={jinx} alt="Jinx" width="100px" />
-        </div>
-        <div className="featured-pet-info">
-          <h2>Jinx</h2>
-          <p>Jinx likes treats and sleeping</p>
-          </div>
+      <h1 className="featured-pet-title">Found Friends</h1>
+      {foundDiv('Kobe', 'https://i.ibb.co/YTt3tqW/275649418-659368725316199-7217861032276615800-n-1.jpgibb.co/CsnznTt', 'He was found under the swing. Thank you Welcome Home Friend!')}
+      {foundDiv('Jinx', 'https://i.ibb.co/MDW5kzJ/Jinx-Krisette.jpg', 'OMG! Thank you, Welcome Home Friend! I was able to find my baby jinx!')}
+      {foundDiv('Butter', 'https://i.ibb.co/V2qfYnQ/Butter-Tim-Cousin.jpg', 'Booter')}
+      {foundDiv('Django', 'https://i.ibb.co/7GgtNmH/Capture.png', 'Honestly I\'ll probably end up making another post. He disappears every other day')}
     </div>
-    </div> 
   );
 };
 

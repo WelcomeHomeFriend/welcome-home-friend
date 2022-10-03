@@ -17,7 +17,7 @@ petController.getPet = (req, res, next) => {
 
 petController.addPet = (req, res, next) => {
   // getting req.body data of all input
-
+  // name and breed required
   const {pet_name, phone_number, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments} = req.body;
   let {_id} = req.body;
   _id = Math.floor(Math.random() * 10000000); //new Date().getTime()  

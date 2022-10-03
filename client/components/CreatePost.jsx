@@ -34,7 +34,7 @@ const CreatePost = () => {
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'gray',
+              borderColor: '#333',
             },
             '& input': {
               fontSize: '0.8rem',
@@ -73,7 +73,7 @@ const CreatePost = () => {
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'gray',
+              borderColor: '#333',
             },
             '& textarea': {
               fontSize: '0.8rem',
@@ -96,20 +96,20 @@ const CreatePost = () => {
 
         <h4>Your Information</h4>
         <div className="create-post-inputs">
-        {inputDiv('Name:', 'owner')}
+        {inputDiv('Name:', 'owner', true)}
+        {inputDiv('Phone Number:', 'phone_number', true)}
         {textAreaDiv('Address:', 'address')}
-        {inputDiv('Number:', 'phone_number')}
         </div>
         
         <h4>Pet's Information</h4>
         <div className="create-post-inputs">
         {inputDiv('Name:', 'pet_name', true)}
-        {inputDiv('Breed:', 'type')}
+        {inputDiv('Breed:', 'type', true)}
+        {inputDiv('Fur Color:', 'fur_color')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
-        {inputDiv('Fur Color:', 'fur_color')}
-        {inputDiv('Pet Photo:', 'image_url')}
-        {textAreaDiv('Last Seen:', 'last_found')}
+        {inputDiv('Pet Photo URL:', 'image_url')}
+        {textAreaDiv('Last Known Location:', 'last_found')}
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
 
@@ -148,7 +148,7 @@ const CreatePost = () => {
 //make a petData a function that returns an Object with all the data from the input fields of the DOM
 //make sure he data is formatted with correct key value pairs
 //NOTE: make sure elements of dataKey match with the second param of inputDiv
-const dataKeys = ['pet_name', 'image_url', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
+const dataKeys = ['pet_name', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
 const petData = () => {
   const dataObj = {}
 
