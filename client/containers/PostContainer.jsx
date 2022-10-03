@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //import child components/ containers
 import Post from "../components/Post.jsx";
 import { usePetContext, usePetUpdateContext } from "../contexts/PostContext.jsx";
@@ -6,8 +6,17 @@ import { usePetContext, usePetUpdateContext } from "../contexts/PostContext.jsx"
 
 const PostContainer = () => {
     const petArr = usePetContext();
-    const addPetArr = usePetUpdateContext();
+    const addPetData = usePetUpdateContext();
     
+    useEffect(() => {
+        fetch('/api')
+            .then(res => res.json())
+            .then(data => {
+                addPetData(data)
+            })
+            .catch(err => console.log(err));
+    }, [])
+
     return (
         <div className="post-container">
           <h1 className="center-text">Lost Friends</h1>

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 const CreatePost = () => {
-  const addPetArr = usePetUpdateContext();
+  const addPetData = usePetUpdateContext();
   // const petDetails = usePetContext()
   // _id (req), pet_name (req), owner, address, eye_color, gender, image_url, fur_color, last_found, comments
 
@@ -104,9 +104,11 @@ const CreatePost = () => {
         <h4>Pet's Information</h4>
         <div className="create-post-inputs">
         {inputDiv('Name:', 'pet_name', true)}
+        {inputDiv('Breed:', 'type')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
         {inputDiv('Fur Color:', 'fur_color')}
+        {inputDiv('Pet Photo:', 'image_url')}
         {textAreaDiv('Last Seen:', 'last_found')}
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
@@ -123,8 +125,20 @@ const CreatePost = () => {
                 color: '#222'
               },
             }}
-            onClick={() => addPetArr(petData())}>
-              Submit Lost Pet
+            onClick={() => {
+              // addPetData(petData())
+              // fetch(postURL).then(whtvr).catch(handleerr)
+              
+              fetch('/api/pet', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(petData())
+              })
+                .then(res => res.json()) //then adding the pet to our state
+                .then(data => addPetData(data))
+                .catch(err => console.log(err))
+            }}
+            >Submit Lost Pet
             </Button>
         </div>
     </div>
@@ -134,7 +148,7 @@ const CreatePost = () => {
 //make a petData a function that returns an Object with all the data from the input fields of the DOM
 //make sure he data is formatted with correct key value pairs
 //NOTE: make sure elements of dataKey match with the second param of inputDiv
-const dataKeys = ['pet_name', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
+const dataKeys = ['pet_name', 'image_url', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
 const petData = () => {
   const dataObj = {}
 

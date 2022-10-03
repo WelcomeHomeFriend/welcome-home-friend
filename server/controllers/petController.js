@@ -18,13 +18,13 @@ petController.getPet = (req, res, next) => {
 petController.addPet = (req, res, next) => {
   // getting req.body data of all input
 
-  const {pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments} = req.body;
+  const {pet_name, phone_number, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments} = req.body;
   let {_id} = req.body;
   _id = Math.floor(Math.random() * 10000000); //new Date().getTime()  
   console.log(_id);
   
-  const insertChar ="INSERT INTO animals (_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *"
-  const value = [_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments];
+  const insertChar ="INSERT INTO animals (_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments, phone_number) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *"
+  const value = [_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments, phone_number];
 
   db.query(insertChar, value, (err, result)=>{
       if (err) {
