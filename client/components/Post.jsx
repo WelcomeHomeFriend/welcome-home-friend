@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "./PostModal.jsx"
 import pushpin from '../images/randoogle_Thumbtack_Pushpin.svg';
 import { usePetUpdateContext } from "../contexts/PostContext.jsx";
+import Button from '@mui/material/Button';
 
 const Post = ( {petObj} ) => {
   //petObj will be a giant object with key value pairs of:
@@ -28,7 +29,21 @@ const Post = ( {petObj} ) => {
         <p>Owner is: <b>{petObj.owner.toUpperCase()}</b></p>
       <Modal petObj={petObj}></Modal>
       </div>
-      <button className='found-button'
+      <div className="found-button">
+      <Button
+            className="found-btn"
+            size="large"
+            variant="contained"
+            sx={{
+              marginTop: '20px',
+              backgroundColor: '',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: 'orange',
+                color: '#222'
+              },
+            }}
+
          onClick={() => {
           fetch('/api/found', {
             method: 'POST',
@@ -40,7 +55,8 @@ const Post = ( {petObj} ) => {
             })
             .catch(err => console.log(err))
         }}
-      >Found</button>
+      >Found</Button>
+      </div>
     </div>
   )
 }

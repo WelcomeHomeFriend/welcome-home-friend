@@ -185,10 +185,22 @@ body {
 
 .info {
   text-align: center;
+  height: 15rem;
 }
 
 .submit-btn {
   margin-top: 10px;
+}
+
+.found-button {
+  display:flex;
+  position: relative;
+  justify-content: center;
+}
+
+.found-btn {
+  position: absolute;
+  bottom: 0;
 }
 
 #modal-modal-description{
