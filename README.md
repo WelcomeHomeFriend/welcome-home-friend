@@ -1,4 +1,4 @@
-<p align="center"><img src="./client/images/logo.png" style="filter: invert();" alt="Welcome Home Friend" /></p>
+<p align="center"><img src="./client/images/logo.png" alt="Welcome Home Friend" /></p>
 
 # Welcome Home, Friend!
 
