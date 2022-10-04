@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../images/logo_navbar.png';
 import title from '../images/title_navbar.png';
+import Button from '@mui/material/Button';
 
 const Navbar = () => {
   return (
@@ -12,7 +13,18 @@ const Navbar = () => {
         <img src={title} alt="title" />
       </div>
       <div id="navbar-login">
-        <button id="login-button" type="button">Log In</button>
+      <Button
+            size="large"
+            variant="contained"
+            sx={{
+              backgroundColor: '#EED971FF',
+              color: 'black',
+              '&:hover': {
+                backgroundColor: 'orange',
+                color: '#222'
+              },
+            }}
+            >Log In</Button>
       </div>
     </div>
     /* logo / welcome home friend / login button */ 

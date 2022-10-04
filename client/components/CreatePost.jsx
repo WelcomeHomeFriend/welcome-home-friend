@@ -40,7 +40,7 @@ const CreatePost = () => {
               fontSize: '0.8rem',
             },
             '&:hover fieldset': {
-              borderColor: 'white',
+              borderColor: 'orange',
             },
             '&.Mui-focused fieldset': {
               borderColor: '#333',
@@ -79,7 +79,7 @@ const CreatePost = () => {
               fontSize: '0.8rem',
             },
             '&:hover fieldset': {
-              borderColor: 'white',
+              borderColor: 'orange',
             },
             '&.Mui-focused fieldset': {
               borderColor: '#333',
@@ -92,7 +92,7 @@ const CreatePost = () => {
 
   return (
     <div className="create-post">
-        <h3>Create a Post</h3>
+        <h1>Create a Post</h1>
 
         <h4>Your Information</h4>
         <div className="create-post-inputs">
@@ -108,7 +108,7 @@ const CreatePost = () => {
         {inputDiv('Fur Color:', 'fur_color')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
-        {inputDiv('Pet Photo URL:', 'image_url')}
+        {inputDiv('Pet Photo URL:', 'image_url',)}
         {textAreaDiv('Last Known Location:', 'last_found')}
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
@@ -118,10 +118,11 @@ const CreatePost = () => {
             size="large"
             variant="contained"
             sx={{
-              backgroundColor: '#666',
-              color: 'white',
+              marginTop: '20px',
+              backgroundColor: '#EED971FF',
+              color: 'black',
               '&:hover': {
-                backgroundColor: '#ddd',
+                backgroundColor: 'orange',
                 color: '#222'
               },
             }}
@@ -140,6 +141,9 @@ const CreatePost = () => {
             }}
             >Submit Lost Pet
             </Button>
+        </div>
+        <div className="cat-divider">
+        <img id="cat-divider" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de114712-7dca-4f5b-920a-8a7d7d75c452/de0jawd-5dcf5ace-2070-45d1-9511-9d6277d25180.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RlMTE0NzEyLTdkY2EtNGY1Yi05MjBhLThhN2Q3ZDc1YzQ1MlwvZGUwamF3ZC01ZGNmNWFjZS0yMDcwLTQ1ZDEtOTUxMS05ZDYyNzdkMjUxODAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.lDQR5USnXOaRH_Y0ijIykOzRbAO-9Zh3GlzdTvrY-Ms"/>
         </div>
     </div>
   )
