@@ -1,3 +1,5 @@
+<p align="center"><img src"./images/logo.png"></p>
+
 # Welcome Home, Friend!
 
 Welcome Home Friend is an app to help lost pet owners find their furry friend once again by sharing information with the community.
