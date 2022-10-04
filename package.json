@@ -8,7 +8,7 @@
     "start": "node server/server.js",
     "build": "export NODE_ENV=production && webpack",
     "dev": "concurrently \"nodemon server/server.js\" \"webpack-dev-server --mode development --open --hot\"",
-    "devReact" : "webpack-dev-server --mode development --open --hot"
+    "devReact": "webpack-dev-server --mode development --open --hot"
   },
   "repository": {
     "type": "git",
@@ -48,7 +48,9 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.7",
+    "@react-google-maps/api": "^2.13.1",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "pg-promise": "^10.12.0",
