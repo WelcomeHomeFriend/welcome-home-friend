@@ -6,32 +6,6 @@ const PORT = 3000;
 
 const apiRouter = require('./routes/api');
 
-// app.use(express.json());   on line 36!
-
-
-
-
-// This section is for grabbing data from server to SQL database //
-// var pg = require('pg');
-//or native libpq bindings
-//var pg = require('pg').native
-
-// var conString = "postgres://thszliqh:f6_hpjl5OD2XMZ62pWetNaCNOuOcDeGK@heffalump.db.elephantsql.com/thszliqh" //Can be found in the Details page
-// var client = new pg.Client(conString);
-// client.connect(function(err) {
-//   if(err) {
-//     return console.error('could not connect to postgres', err);
-//   }
-//   client.query('SELECT * FROM "animals"', function(err, result) {
-//     if(err) {
-//       return console.error('error running query', err);
-//     }
-//     console.log(result.rows[0].theTime);
-//     // >> output: 2018-08-23T14:02:57.117Z
-//     client.end();
-//   });
-// });
-
 /**
  * handle parsing request body
  */
@@ -42,6 +16,12 @@ const apiRouter = require('./routes/api');
   * define route handlers
   */
   app.use('/api', apiRouter);
+
+  // route for serving static html
+  app.use(express.static(path.join(__dirname, '../build')));
+
+
+  
 
  // catch-all route handler for any requests to an unknown route
  app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));

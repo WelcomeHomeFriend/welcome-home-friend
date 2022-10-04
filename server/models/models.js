@@ -3,11 +3,11 @@
 // const pgp = require("pg-promise")()
 // requiring dotenv file in .env, can now grab variables using process.env
 require('dotenv').config()
-console.log(process.env.CONNECTION_STRING);
+console.log(process.env.PG_CONNECT_STR);
 // console.log(path.join(__dirname + "../../.env"))
 
 // from dotenv, connectionString will be the URL for database
-const connectionString = process.env.CONNECTION_STRING;
+const connectionString = process.env.PG_CONNECT_STR;
 // const db = pgp(connectionString)
 
 
