@@ -32,10 +32,11 @@ UserController.verifyUser = (req, res, next) => {
 // during signup, stores new username/pw to db
 UserController.createUser = (req, res, next) => {
   const { username, password } = req.body;
-  db.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
+  db.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *', [username, password])
     .then(data => {
-      res.locas.user = data.rows[0];
-      next();
+      console.log(data.rows);
+      res.locals.user = data.rows[0];
+      return next();
     })
     .catch(err => next({
       log: 'Express error in userController.createUser',
@@ -73,7 +74,7 @@ UserController.setCookie = (req, res, next) => {
   const { user_id } = res.locals.user;
   const cookie_id = Math.random().toString();
   res.cookie('SSID', cookie_id);
-  db.query('INSERT INTO sessions (cookie, user_id) VALUES ($1, $2)', [cookie_id, user_id])
+  db.query('INSERT INTO sessions (cookie, user_id) VALUES ($1, $2) RETURNING *', [cookie_id, user_id])
     .then(data => {
       return next();
     })

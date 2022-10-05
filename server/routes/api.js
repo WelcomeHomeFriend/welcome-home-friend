@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get('/', 
-    UserController.checkCookie, 
+    // UserController.checkCookie,  // uncomment when frontend is implemented redirect user to login
     petController.getPet, 
     (req, res) => {
     return res.status(200).json(res.locals.rows) 
@@ -30,21 +30,23 @@ router.post('/signup',
     UserController.verifyUser, 
     UserController.createUser, 
     UserController.setCookie, 
-    (res, req) => {
-    return res.status(200).json({});
+    (req, res) => {
+    console.log('in signup route');
+    return res.status(200).json(res.locals.user);
 });
 
 
 router.post('/login', 
     UserController.loginUser, 
     UserController.setCookie, 
-    (res, req) => {
-    res.status(200).json({})
+    (req, res) => {
+    console.log('in login route')
+    res.status(200).json(res.locals.user)
 });
 
 router.post('/logout', 
     UserController.logoutUser, 
-    (res, req) => {
+    (req, res) => {
     res.status(200).json({})
 });
 
