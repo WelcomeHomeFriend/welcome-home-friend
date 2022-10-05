@@ -1,3 +1,6 @@
+
+
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -9,6 +12,19 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+CREATE TABLE public.users (
+	"_id" serial NOT NULL,
+	"first_name" varchar NOT NULL,
+	"last_name" varchar,
+	"address" varchar,
+	"username" varchar,
+	"location" varchar,
+	"oauth" varchar,
+	"pet" varchar,
+
+	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
+);
+
 CREATE TABLE public.animals (
 	"_id" serial NOT NULL,
 	"pet_name" varchar NOT NULL,
@@ -19,8 +35,8 @@ CREATE TABLE public.animals (
 	"image_url" varchar,
 	"fur_color" varchar,
 	"last_found" varchar,
+	"user_id" varchar,
 
 	CONSTRAINT "animals_pk" PRIMARY KEY ("_id")
-) WITH (
-  OIDS=FALSE
+	FOREIGN KEY ("user_id") references public.users("_id")
 );
