@@ -5,16 +5,17 @@ const userController = {};
 //create user
 userController.createUser = async (req, res, next) => {
   console.log('IN CREATEUSER')
-  const { username, password } = req.body; 
-  const param = [username, password]
+  const { name, username, password } = req.body; 
+  const param = [name, username, password]
 
   try {
     //push the data into DB
     const newUserQuery = `INSERT INTO public.user(
+      name,
       username,
       password
     )
-    VALUES($1, $2);`;
+    VALUES($1, $2, $3);`;
 
     const result = await db.query(newUserQuery, param);
     
