@@ -31,9 +31,9 @@ const Navbar = () => {
      // use state to store user?
   }
 
-  const logout = () => {
-    console.log('logged out')
-  }
+  // const logout = () => {
+  //   console.log('logged out')
+  // }
 
   return (
     <div className="navbar-container">
@@ -56,13 +56,14 @@ const Navbar = () => {
           onFailure={handleLogin}
           cookiePolicy={'single_host_origin'}
           isSignedIn={false}
+          redirectUri="postmessage"
         />
-        <GoogleLogout
+        {/* <GoogleLogout
           clientId="917801807567-gfe8tjdgm07q6amr1j70nmfjdjh4q0gh.apps.googleusercontent.com"
           buttonText="Logout"
           onLogoutSuccess={logout}
         >
-        </GoogleLogout>
+        </GoogleLogout> */}
         {/* <Button
           size="large"
           variant="contained"

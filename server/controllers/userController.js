@@ -10,25 +10,26 @@ const userController = {};
 
 
 //verify the token ID
-userController.verifyTokenId = (request, response, next) => {
+userController.verifyTokenId = async (request, response, next) => {
   console.log('inside verifyTokenId')
-  // //Google sends us an id token to this route. 
-  // //Grab it from the request body
-  // const { token }  = request.body
-  // //Now we go to google's servers and download it, and check that it's the same as was sent to us. 
-  // const ticket = await client.verifyIdToken({
-  //   idToken: token,
-  //   audience: process.env.CLIENT_ID
-  // });
-  // //Assuming we're good, we get a payload of name, email, picture.
-  // //We need more than this? See if we can get more than this. 
-  // const payload = ticket.getPayload();
-  // console.log('What is google telling people about me? ', payload);
-  // const { name, email, picture } = payload;
-  // //add those to request.locals.userDetails
-  // request.locals.name = name;
-  // request.locals.email = email;
-  // request.locals.picture = picture;
+  //Google sends us an id token to this route. 
+  //Grab it from the request body
+  const { token }  = request.body
+  console.log('this is the token', token);
+  //Now we go to google's servers and download it, and check that it's the same as was sent to us. 
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.CLIENT_ID
+  });
+  //Assuming we're good, we get a payload of name, email, picture.
+  //We need more than this? See if we can get more than this. 
+  const payload = ticket.getPayload();
+  console.log('What is google telling people about me? ', payload);
+  const { name, email, picture } = payload;
+  //add those to request.locals.userDetails
+  request.locals.name = name;
+  request.locals.email = email;
+  request.locals.picture = picture;
   return next();
 
 }
