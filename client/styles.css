@@ -206,3 +206,10 @@ body {
 #modal-modal-description{
   background-color: #FFBE7BFF;
 }
+
+
+.map-please {
+  height: 900px;
+  width: 1000px;
+  /* background-color: aquamarine; */
+}
