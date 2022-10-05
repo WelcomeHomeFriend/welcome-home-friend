@@ -4,19 +4,54 @@ const postController = {};
 postController.getPosts = async (req, res, next) => {
   try {
     // query str
-    const getPostsQuery = `SELECT * FROM public.post`;
+    const getPostsQuery = `SELECT p.timestamp, p.description, p._id, 
+                            a._id, a.name, a.eye_color, a.gender, a.color, a.last_seen, a.images,
+                            u.username, c.user_id, c.text, c.timestamp
+                           FROM public.post AS p
+                           INNER JOIN public.comment AS c ON p._id = c.post_id
+                           INNER JOIN public.animals AS a ON p.pet_id = a._id
+                           INNER JOIN public.user AS u ON p.user_id = u._id
+                           ORDER BY p.timestamp`;
 
     const result = await db.query(getPostsQuery);
-    console.log(result);
-
+    console.log(result.rows);
     // locals.postsArr should be an arr of objs
-    res.locals.postsArr = result;
+    res.locals.postsArr = result.rows;
+    return next();
   } catch (error) {
     return next({
       log: "Express error in getPosts middleware",
       status: 400,
       message: {
         err: `userController.getPosts: ERROR: ${error}`,
+      },
+    });
+  }
+};
+
+postController.getOnePost = async (req, res, next) => {
+  // find post for response to frontend
+  try {
+    const param = [res.locals.post_id];
+    console.log(param);
+    const getPostQuery = `SELECT p.timestamp, p.description, p._id, 
+                            a._id, a.name, a.eye_color, a.gender, a.color, a.last_seen, a.images,
+                            u.username, c.user_id, c.text, c.timestamp
+                          FROM public.post AS p
+                          INNER JOIN public.animals AS a ON p.pet_id = a._id
+                          INNER JOIN public.user AS u ON p.user_id = u._id
+                          INNER JOIN public.comment AS c ON u._id = c.user_id
+                          WHERE c.post_id=$1`;
+    const newPostData = await db.query(getPostQuery, param);
+    console.log(newPostData.rows[0]);
+    res.locals.newPost = newPostData.rows[0];
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in getOnePost middleware",
+      status: 400,
+      message: {
+        err: `postController.getOnePost: ERROR: ${error}`,
       },
     });
   }
@@ -84,88 +119,117 @@ postController.addPost = async (req, res, next) => {
   }
 };
 
-// petController.getPet = (req, res, next) => {
-//   // write code here
-//   //use client in here -> might be using query here ?
-//   db.query('SELECT * FROM public.animals', (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.locals.rows = result.rows; //this is an array
-//     }
-//     return next();
-//   });
-// };
+postController.deletePost = async (req, res, next) => {
+  const { post_id, pet_id } = res.locals.post;
+  console.log("Post ID:", post_id);
+  console.log("Pet ID:", pet_id);
+  try {
+    // delete post
+    const param = [post_id];
+    const deletePostQuery = `DELETE FROM public.post WHERE _id = $1`;
+    const deletePostResult = await db.query(deletePostQuery, param);
+  } catch (error) {
+    return next({
+      log: "Express error in deletePost -deletePost- middleware",
+      status: 400,
+      message: {
+        err: `petController.deletePost: ERROR: ${error}`,
+      },
+    });
+  }
+  try {
+    // delete pet
+    const param2 = [pet_id];
+    const deletePetQuery = `DELETE FROM public.animals WHERE _id = $1`;
+    const deletePetResult = await db.query(deletePetQuery, param2);
 
-// petController.addPet = (req, res, next) => {
-//   // getting req.body data of all input
-//   // name and breed required
-//   const {
-//     pet_name,
-//     phone_number,
-//     owner,
-//     address,
-//     eye_color,
-//     gender,
-//     image_url,
-//     fur_color,
-//     last_found,
-//     type,
-//     comments,
-//   } = req.body;
-//   let { _id } = req.body;
-//   _id = Math.floor(Math.random() * 10000000); //new Date().getTime()
-//   console.log(_id);
+    res.locals.status = { success: true, message: "Post deleted" };
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in deletePost -deletePet- middleware",
+      status: 400,
+      message: {
+        err: `petController.deletePost: ERROR: ${error}`,
+      },
+    });
+  }
+};
 
-//   const insertChar =
-//     'INSERT INTO public.animals (_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments, phone_number) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *';
-//   const value = [
-//     _id,
-//     pet_name,
-//     owner,
-//     address,
-//     eye_color,
-//     gender,
-//     image_url,
-//     fur_color,
-//     last_found,
-//     type,
-//     comments,
-//     phone_number,
-//   ];
+// middleware for deleting a single comment
+postController.deleteComment = async (req, res, next) => {
+  // req.body
+  const { comment_id, post_id } = req.query;
 
-//   db.query(insertChar, value, (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log('result', result.rows[0]);
-//       // if we want to return single row inserted, uncomment below
-//       res.locals.newPet = result.rows;
-//       return next();
-//     }
-//   });
-// };
+  const param = [comment_id];
 
-// petController.foundPet = (req, res, next) => {
-//   // getting req.body data of all input
-//   // name and breed required
-//   const { _id } = req.body;
-//   console.log(_id);
+  try {
+    const deleteCommentQuery = `DELETE FROM public.comment WHERE _id=$1`;
 
-//   const insertChar =
-//     'DELETE from public.animals WHERE _id IN ($1) RETURNING *;';
-//   const value = [_id];
+    db.query(deleteCommentQuery, param);
 
-//   db.query(insertChar, value, (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log('result', result.rows);
-//       // if we want to return single row inserted, uncomment below
-//       res.locals.newPet = result.rows;
-//       return next();
-//     }
-//   });
-// };
+    res.locals.post_id = post_id;
+
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in deleteComment middleware",
+      status: 400,
+      message: {
+        err: `userController.deleteComment: ERROR: ${error}`,
+      },
+    });
+  }
+};
+
+postController.deleteAllComments = async (req, res, next) => {
+  // req.body
+  const { post_id, pet_id } = req.query;
+
+  const param = [post_id];
+
+  try {
+    const deleteCommentQuery = `DELETE FROM public.comment WHERE post_id=$1`;
+
+    const result = db.query(deleteCommentQuery, param);
+
+    res.locals.post = { post_id: post_id, pet_id: pet_id };
+
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in deleteComment middleware",
+      status: 400,
+      message: {
+        err: `userController.deleteComment: ERROR: ${error}`,
+      },
+    });
+  }
+};
+
+postController.addComment = async (req, res, next) => {
+  const { comment, post_id, user_id } = req.body;
+
+  const param = [comment, post_id, user_id];
+
+  try {
+    const addCommentQuery = `INSERT INTO public.comment(text, post_id, user_id) 
+                             VALUES($1, $2, $3)`;
+
+    db.query(addCommentQuery, param);
+
+    res.locals.post_id = post_id;
+
+    return next();
+  } catch (error) {
+    return next({
+      log: "Express error in deleteComment middleware",
+      status: 400,
+      message: {
+        err: `userController.deleteComment: ERROR: ${error}`,
+      },
+    });
+  }
+};
 
 module.exports = postController;
