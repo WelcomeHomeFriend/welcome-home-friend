@@ -113,7 +113,7 @@ const CreatePost = () => {
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
 
-        <div className="create-post-submit">
+        <div className="create-post-submit"> 
           <Button
             size="large"
             variant="contained"
