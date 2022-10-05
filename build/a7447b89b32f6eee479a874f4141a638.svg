@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg3253" viewBox="0 0 110.65 84.3" version="1.0">
+  <defs id="defs3255">
+    <linearGradient id="linearGradient3228">
+      <stop id="stop3230" stop-color="#fff" offset="0"/>
+      <stop id="stop3232" stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <filter id="filter3372" y="-.21328" width="1.3288" x="-.1644" height="1.4266">
+      <feGaussianBlur id="feGaussianBlur3374" stdDeviation="1.2413119"/>
+    </filter>
+    <filter id="filter4036">
+      <feGaussianBlur id="feGaussianBlur4038" stdDeviation="0.52661716"/>
+    </filter>
+    <radialGradient id="radialGradient4051" gradientUnits="userSpaceOnUse" cy="12.798" cx="278.53" gradientTransform="matrix(1.6668 .25023 -.43535 1.4424 -180.07 -76.258)" r="7.3868">
+      <stop id="stop3254" stop-opacity=".99107" offset="0"/>
+      <stop id="stop3926" stop-opacity=".61607" offset=".51389"/>
+      <stop id="stop3260" stop-color="#8d8d8d" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4053" gradientUnits="userSpaceOnUse" cy="4.6951" cx="305.98" r="8.9206">
+      <stop id="stop3386" stop-color="#f60000" offset="0"/>
+      <stop id="stop3388" stop-color="#b30000" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4057" gradientUnits="userSpaceOnUse" cy="4.6951" cx="302.83" r="8.9206">
+      <stop id="stop3214" stop-color="#7f0000" offset="0"/>
+      <stop id="stop3828" stop-color="#840000" stop-opacity=".49804" offset=".66667"/>
+      <stop id="stop3210" stop-opacity="0" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4059" xlink:href="#linearGradient3228" gradientUnits="userSpaceOnUse" cy="228.65" cx="537.75" gradientTransform="matrix(-.78797 .51073 -2.0452 -3.1554 1235.7 709.11)" r=".74646"/>
+    <radialGradient id="radialGradient4061" gradientUnits="userSpaceOnUse" cy="4.6951" cx="302.83" r="8.9206">
+      <stop id="stop3218" stop-color="#d43500" offset="0"/>
+      <stop id="stop3242" stop-color="#d42400" offset=".48052"/>
+      <stop id="stop3224" stop-color="#d40000" offset=".73611"/>
+      <stop id="stop3236" stop-color="#b20000" offset="1"/>
+    </radialGradient>
+    <radialGradient id="radialGradient4063" xlink:href="#linearGradient3228" gradientUnits="userSpaceOnUse" cy="228.65" cx="537.75" gradientTransform="matrix(1.6289 -1.2473 4.9949 6.5229 -1652.8 -572.9)" r=".74646"/>
+  </defs>
+  <g id="layer1" transform="translate(-352.53 -462.42)">
+    <g id="g3244" transform="translate(27.292 274.08)">
+      <g id="g4040" transform="matrix(2.8354 0 0 2.8354 -582.54 -496.94)">
+        <path id="path3250" opacity=".74519" d="m286.18 14.557a7.3868 8.4658 0 1 1 -14.78 0 7.3868 8.4658 0 1 1 14.78 0z" transform="matrix(.74572 1.2436 -1.4018 .67799 145.75 -95.966)" filter="url(#filter4036)" fill="url(#radialGradient4051)"/>
+        <g id="g3934" transform="translate(-8.0347 -1.7217)">
+          <path id="path3202" transform="matrix(1.2137 0 0 1.2137 -14.363 252.22)" fill="url(#radialGradient4053)" d="m311.75 4.6951a8.9206 8.9206 0 1 1 -17.84 0 8.9206 8.9206 0 1 1 17.84 0z"/>
+          <path id="path3474" opacity=".41827" d="m286.18 14.557a7.3868 8.4658 0 1 1 -14.78 0 7.3868 8.4658 0 1 1 14.78 0z" transform="matrix(.43828 .73087 -.82390 .39847 239.3 48.621)" filter="url(#filter3372)" fill="url(#radialGradient4051)"/>
+          <path id="path3468" transform="matrix(.74879 0 0 .74879 127.83 252.2)" fill="url(#radialGradient4057)" d="m311.75 4.6951a8.9206 8.9206 0 1 1 -17.84 0 8.9206 8.9206 0 1 1 17.84 0z"/>
+          <path id="path3478" fill-rule="evenodd" fill="url(#radialGradient4059)" d="m345.62 263.57c-1.25-1-1.59-1.56-1.4-2.71 0.54 1.48 1.34 2.62 1.4 2.71z"/>
+        </g>
+        <g id="g3930" transform="translate(-8.0347 -1.7217)">
+          <path id="path3204" transform="matrix(.94140 0 0 .94140 73.738 247.39)" fill="url(#radialGradient4061)" d="m311.75 4.6951a8.9206 8.9206 0 1 1 -17.84 0 8.9206 8.9206 0 1 1 17.84 0z"/>
+          <path id="path3226" fill-rule="evenodd" fill="url(#radialGradient4063)" d="m362.32 245.18c2.89 1.96 3.72 3.14 3.5 5.67-1.43-3.15-3.37-5.49-3.5-5.67z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Pushpin</dc:title>
+        <dc:date>2008-04-20T22:58:08</dc:date>
+        <dc:description>Just a normal thumb-tack/push-pin.&#xD;\nCouldn't find any of these in the library, so I made one. Enjoy /:]</dc:description>
+        <dc:source>http://openclipart.org/detail/16491/thumbtack/pushpin-by-randoogle</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>randoogle</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>office</rdf:li>
+            <rdf:li>pin</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>pushpin</rdf:li>
+            <rdf:li>red</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>tack</rdf:li>
+            <rdf:li>thumbtack</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
