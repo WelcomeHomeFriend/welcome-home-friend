@@ -6,12 +6,23 @@ const UserController = require('../controllers/UserController');
 const router = express.Router();
 
 
+// Check for cookie after user signs in, display all lost pets
 router.get('/', 
-    // UserController.checkCookie,  // uncomment when frontend is implemented redirect user to login
+    // UserController.checkCookie,  // uncomment when frontend is implemented redirect user to landing page
     petController.getPet, 
     (req, res) => {
-    return res.status(200).json(res.locals.rows) 
+    return res.status(200).json(res.locals.pets) 
 });
+
+// Displays current user's lost pets
+router.get('/user', petController.userPets, (req, res) => {
+    return res.status(200).json(res.locals.userPets);
+})
+
+// Displays landing page's limited pet info
+router.get('/landing', petController.getLanding, (req, res) => {
+    return res.status(200).json(res.locals.pets);
+})
 
 
 router.post('/pet',
@@ -21,9 +32,10 @@ router.post('/pet',
     return res.status(200).json(res.locals.newPet); 
 });
 
-router.post('/found',   
+router.post('/found', 
+    petController.foundPet,  
     (req, res) => {
-    return res.status(200).json(res.locals.newPet); 
+    return res.status(200).json(res.locals.foundPet); 
 });
 
 

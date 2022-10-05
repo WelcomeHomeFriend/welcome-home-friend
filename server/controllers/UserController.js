@@ -87,6 +87,17 @@ UserController.setCookie = (req, res, next) => {
     }))
 }
 
+// when a person enter website, landing page first entry point
+// will contain GET /landmark
+
+
+// in a case that cookie is valid, route to main page
+// if not, display GET /landmark
+
+// first entry point as the main page, GET '/api/
+// if getting unauthorized response, frontend will redirect to landing page
+// which will have a component that makes GET /landmark
+
 
 // checks if user has pre-existing session
 UserController.checkCookie = (req, res, next) => {
@@ -95,6 +106,7 @@ UserController.checkCookie = (req, res, next) => {
       if (data.rows.length === 0) {
         return res.status(401).json('Unauthorized');
       }
+      res.locals.user = data.rows[0];
       return next();
     })
     .catch(err => next({

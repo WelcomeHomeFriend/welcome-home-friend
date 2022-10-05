@@ -8,6 +8,7 @@ const apiRouter = require('./routes/api');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// serve index.html to GET '/'
 
 app.use('/api', apiRouter);
 
