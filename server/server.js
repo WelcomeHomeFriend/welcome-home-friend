@@ -2,14 +2,12 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-// const db = require('./db') // grabbing db from inside the other folders ... might not be needed here?
-
 const apiRouter = require('./routes/api');
 
-// app.use(express.json());   on line 36!
 
+app.use(express.json());
 
-
+app.use('/api', apiRouter);
 
 // This section is for grabbing data from server to SQL database //
 // var pg = require('pg');
@@ -32,21 +30,11 @@ const apiRouter = require('./routes/api');
 //   });
 // });
 
-/**
- * handle parsing request body
- */
- app.use(express.json());
-//  app.use(express.urlencoded({ extended: true }));
 
- /**
-  * define route handlers
-  */
-  app.use('/api', apiRouter);
-
- // catch-all route handler for any requests to an unknown route
+// catch-all route handler for any requests to an unknown route
  app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
-//global error handler
+// global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
@@ -61,4 +49,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost${PORT}...`)
 })
+
 module.exports = app;

@@ -1,6 +1,7 @@
 const db = require('../models/models');
 const UserController = {};
 
+
 // during signup, checks if username is already taken
 UserController.verifyUser = (req, res, next) => {
   const { username } = req.body;
@@ -27,10 +28,11 @@ UserController.verifyUser = (req, res, next) => {
     }))
 }
 
+
+// during signup, stores new username/pw to db
 UserController.createUser = (req, res, next) => {
   const { username, password } = req.body;
   db.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
-    // after storing new user info in db, create cookie and redirect 
     .then(data => {
       res.locas.user = data.rows[0];
       next();
@@ -44,6 +46,8 @@ UserController.createUser = (req, res, next) => {
     }))
 }
 
+
+// during login, checks username/pw 
 UserController.loginUser = (req, res, next) => {
   const { username, password } = req.body;
   db.query('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password])
@@ -64,22 +68,7 @@ UserController.loginUser = (req, res, next) => {
 }
 
 
-
-UserController.logoutUser = (req, res, next) => {
-  const cookie_id = req.cookies.SSID;
-  db.query('DELETE FROM sessions WHERE cookie = $1', [cookie_id])
-    .then(data => {
-      next();
-    })
-    .catch(err => next({
-      log: 'Express error in userController.logoutUser',
-      status: 400,
-      message: {
-        err: `UserController.logoutUser: ERROR: ${err}`
-      }
-    }))
-}
-
+// upon successful login/signup, creates a cookie and stores session in db
 UserController.setCookie = (req, res, next) => {
   const { user_id } = res.locals.user;
   const cookie_id = Math.random().toString();
@@ -97,6 +86,8 @@ UserController.setCookie = (req, res, next) => {
     }))
 }
 
+
+// checks if user has pre-existing session
 UserController.checkCookie = (req, res, next) => {
   db.query('SELECT * FROM sessions WHERE cookie = $1', [req.cookies.SSID])
     .then(data => {
@@ -113,5 +104,23 @@ UserController.checkCookie = (req, res, next) => {
       }
     }))
 }
+
+
+// during logout, deletes cookie 
+UserController.logoutUser = (req, res, next) => {
+  const cookie_id = req.cookies.SSID;
+  db.query('DELETE FROM sessions WHERE cookie = $1', [cookie_id])
+    .then(data => {
+      next();
+    })
+    .catch(err => next({
+      log: 'Express error in userController.logoutUser',
+      status: 400,
+      message: {
+        err: `UserController.logoutUser: ERROR: ${err}`
+      }
+    }))
+}
+
 
 module.exports = UserController;
