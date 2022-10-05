@@ -7,7 +7,7 @@ const PORT = 3000;
 
 // const apiRouter = require('./routes/api');
 const userRouter = require("./routes/userRouter");
-const postRouter = require("./routes/petRouter");
+const postRouter = require("./routes/postRouter");
 
 /*handle parsing request body*/
 app.use(express.json());
