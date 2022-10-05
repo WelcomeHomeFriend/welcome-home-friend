@@ -8,14 +8,14 @@ const PostContainer = () => {
     const petArr = usePetContext();
     const addPetData = usePetUpdateContext();
     
-    useEffect(() => {
-        fetch('/api')
-            .then(res => res.json())
-            .then(data => {
-                addPetData(data)
-            })
-            .catch(err => console.log(err));
-    }, [])
+    // useEffect(() => {
+    //     fetch('/api')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             addPetData(data)
+    //         })
+    //         .catch(err => console.log(err));
+    // }, [])
 
     return (
         <div className="post-container">
