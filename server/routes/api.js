@@ -15,7 +15,7 @@ router.post('/pet', petController.addPet, (req, res) => {
     return res.status(200).json(res.locals.newPet); // place holders
 });
 
-router.post('/found', petController.foundPet, (req, res) => {
+router.post('/found',   (req, res) => {
     return res.status(200).json(res.locals.newPet); // place holders
 });
 
