@@ -18,24 +18,39 @@ petController.getPet = (req, res, next) => {
 petController.addPet = (req, res, next) => {
   // getting req.body data of all input
   // name and breed required
-  const {pet_name, phone_number, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments} = req.body;
-  let {_id} = req.body;
-  _id = Math.floor(Math.random() * 10000000); //new Date().getTime()  
-  console.log(_id);
+  console.log(req.body);
+  const {pet_name, phone_number, owner, address, eye_color, gender, image_url, fur_color, last_found, breed} = req.body;
+  // let {_id} = req.body;
+  // _id = Math.floor(Math.random() * 10000000); //new Date().getTime()  
+  // console.log(_id);
   
-  const insertChar ="INSERT INTO animals (_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments, phone_number) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *"
-  const value = [_id, pet_name, owner, address, eye_color, gender, image_url, fur_color, last_found, type, comments, phone_number];
+  const insertChar ="INSERT INTO animals (user_id, pet_name, owner, phone_number, address, breed, eye_color, gender, image_url, fur_color, last_found, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *"
+  const value = [1, pet_name, owner, phone_number, address, breed, eye_color, gender, image_url, fur_color, last_found, false];
 
-  db.query(insertChar, value, (err, result)=>{
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("result", result.rows[0]);
-      // if we want to return single row inserted, uncomment below
-      res.locals.newPet = result.rows;
+  db.query(insertChar, value)
+    .then(data => {
+      res.locals.newPet = data.rows;
+      console.log(res.locals.newPet);
       return next();
-      }
     })
+    .catch(err => next({
+      log: 'Express error in petController.addPet',
+      status: 400,
+      message: {
+        err: `petController.addPet: ERROR: ${err}`
+      }
+    }));
+
+  // db.query(insertChar, value, (err, result)=>{
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log("result", result.rows[0]);
+  //     // if we want to return single row inserted, uncomment below
+  //     res.locals.newPet = result.rows;
+  //     return next();
+  //     }
+  //   })
 };
 
 petController.foundPet = (req, res, next) => {

@@ -18,9 +18,11 @@ CREATE TABLE public.animals (
 	"eye_color" varchar,
 	"gender" varchar,
 	"image_url" varchar,
+	"breed" varchar,
 	"fur_color" varchar,
 	"last_found" varchar,
 	"status" BOOLEAN NOT NULL,
+	"phone_number" int
 
 	CONSTRAINT "animals_pk" PRIMARY KEY ("_id")
 ) WITH (

@@ -14,7 +14,8 @@ router.get('/',
 });
 
 
-router.post('/pet', 
+router.post('/pet',
+    // UserController.checkCookie,
     petController.addPet, 
     (req, res) => {
     return res.status(200).json(res.locals.newPet); 

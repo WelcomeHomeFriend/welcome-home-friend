@@ -35,9 +35,9 @@ export default function BasicModal({ petObj }) {
             Help Find <b>{petObj.pet_name.toUpperCase()}</b>!
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          <p>Contact owner at: <b>{petObj.phone_number.toUpperCase()}</b></p>
+          <p>Contact owner at: <b>{petObj.phone_number}</b></p>
           <p>Owner Address is: <b>{petObj.address.toUpperCase()}</b></p>
-          <p>Additional Comments: <b>{petObj.comments.toUpperCase()}</b></p>
+          {/* <p>Additional Comments: <b>{petObj.comments.toUpperCase()}</b></p> */}
           </Typography>
         </Box>
       </Modal>
