@@ -9,6 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // serve index.html to GET '/'
+app.get('/', (req, res) => {
+  return res.redirect('/api/landing');
+})
 
 app.use('/api', apiRouter);
 
