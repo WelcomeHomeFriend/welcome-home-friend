@@ -38,16 +38,13 @@ userController.createUser = async (req, res, next) => {
 userController.verifyUser = async (req, res, next) => {
   console.log('IN VERIFYUSER');
   const { username } = req.body;
-  console.log(req.body);
   const param = [username];
-  console.log(param);
   try {
     // Find user in database
     const verifyUserQuery = `SELECT * FROM public.user WHERE username=$1;`;
 
     // Query result
     const verifyResult = await db.query(verifyUserQuery, param);
-    console.log(verifyResult);
     // User does not exist in database
     if (verifyResult.rows.length === 0) {
       // proceed to next middleware to create user

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 ///user/signup
 ///user/login
 
@@ -7,7 +8,7 @@ export default function Register() {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   //{ success: true , message: 'Account created'}
-
+  const navigate = useNavigate()
   function createAUser() {
     fetch('/user/signup', {
       method: 'POST',
@@ -20,15 +21,18 @@ export default function Register() {
         'Content-Type': 'application/json',
       },
     }).then((data) => {
+      console.log("in the then!")
       if (data.status === 200) {
-        console.log(data);
+        console.log("inside status200")
+        console.log(data.status);
+        return navigate("/login");
       }
-    });
+    })
   }
   return (
     <div>
       <h2 className='registration'>Register</h2>
-      <form>
+
         <input
           type='text'
           title='name'
@@ -51,7 +55,7 @@ export default function Register() {
         <button type='submit' className='btn' onClick={createAUser}>
           Login
         </button>
-      </form>
+
     </div>
   );
 }
