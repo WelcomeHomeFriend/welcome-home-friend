@@ -97,4 +97,21 @@ UserController.setCookie = (req, res, next) => {
     }))
 }
 
+UserController.checkCookie = (req, res, next) => {
+  db.query('SELECT * FROM sessions WHERE cookie = $1', [req.cookies.SSID])
+    .then(data => {
+      if (data.rows.length === 0) {
+        return res.status(401).json('Unauthorized');
+      }
+      return next();
+    })
+    .catch(err => next({
+      log: 'Express error in userController.checkCookie',
+      status: 400,
+      message: {
+        err: `UserController.checkCookie: ERROR: ${err}`
+      }
+    }))
+}
+
 module.exports = UserController;
