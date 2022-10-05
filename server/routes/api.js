@@ -24,7 +24,13 @@ petController.foundPet,
     return res.status(200).json(res.locals.newPet); // place holders
 });
 
-router.post('/v1/auth/google', )
+router.post('/v1/auth/google', 
+userController.verifyTokenId,
+userController.addToDb,
+userController.cookieForSession,
+(req, res) => {
+    return res.status(201).json(res.locals.user);
+});
 
 
 module.exports = router;

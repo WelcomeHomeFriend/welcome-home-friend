@@ -52,11 +52,13 @@
     "@mui/material": "^5.10.7",
     "axios": "^0.27.2",
     "express": "^4.18.1",
+    "google-auth-library": "^8.5.2",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^8.8.0",
     "pg-promise": "^10.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2",
     "react-router-dom": "^6.4.1",
     "sass": "^1.55.0"
   }
