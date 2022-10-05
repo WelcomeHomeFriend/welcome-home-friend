@@ -2,26 +2,25 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-// const db = require('./db') // grabbing db from inside the other folders ... might not be needed here?
+// const cors = require('cors')  npm i cors later when dealing w cookies
+// const cookieParser = require('cookie-parser')
 
 const apiRouter = require('./routes/api');
+const userRouter = require('./routes/userRouter');
 
-/**
- * handle parsing request body
- */
+/*handle parsing request body*/
  app.use(express.json());
 //  app.use(express.urlencoded({ extended: true }));
 
- /**
-  * define route handlers
-  */
+ /*define route handlers*/
   app.use('/api', apiRouter);
+  app.use('/user', userRouter);
 
   // route for serving static html
   app.use(express.static(path.join(__dirname, '../build')));
 
 
-  
+
 
  // catch-all route handler for any requests to an unknown route
  app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));

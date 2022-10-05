@@ -1,22 +1,26 @@
-const { UNSAFE_NavigationContext } = require('react-router-dom');
-const db = require('../models/dbModels');
+const db = require('../models/models.js');
 
-const userController = {};
+const userController = {};  
 
 //create user
 userController.createUser = async (req, res, next) => {
-  const { username, password } = req.body; //user should be an object from frontend
+  console.log('IN CREATEUSER')
+  const { username, password } = req.body; 
+  const param = [username, password]
 
   try {
     //push the data into DB
-    const newCharQuery = `
-    
-    `;
+    const newUserQuery = `INSERT INTO public.user(
+      username,
+      password
+    )
+    VALUES($1, $2);`;
 
-    const result = await db.query(newCharQuery, param);
-  
+    const result = await db.query(newUserQuery, param);
     
-
+    // send back user data from db to frontend
+    res.locals.status = { success: true , message: 'Account created'}
+    
     return next();
 
   } catch (error) {
@@ -32,14 +36,14 @@ userController.createUser = async (req, res, next) => {
 
 // Sign up route: check if user already exists in database
 userController.verifyUser = async (req, res, next) => {
+  console.log('IN VERIFYUSER');
   const { username } = req.body;
 
   const param = [username];
 
   try {
     // Find user in database
-    const verifyUserQuery = `
-    `;
+    const verifyUserQuery = `SELECT * FROM public.user WHERE username=$1;`;
 
     // Query result
     const verifyResult = await db.query(verifyUserQuery, param);
@@ -57,7 +61,7 @@ userController.verifyUser = async (req, res, next) => {
     }
   } catch (error) {
     return next({
-      log: 'Express error in vertifyUser middleware',
+      log: 'Express error in verifyUser middleware',
       status: 400,
       message: {
         err: `userController.verifyUser: ERROR: ${error}`,
@@ -68,18 +72,23 @@ userController.verifyUser = async (req, res, next) => {
 
 //log in
 userController.loginUser = async (req, res, next) => {
+  console.log("IN LOGIN USER")
   const { username, password } = req.body;
 
-  const param = [username];
+  const param = [username, password];
 
   try {
-    const newNameQuery = `
-    
-    `;
+    const newNameQuery = `SELECT * FROM public.user WHERE username=$1 AND password=$2;`;
     const data = await db.query(newNameQuery, param);
 
+    // check to see if the password obtained from database is same as the one sent in req.body
+    if (data.rows.length > 0) {
+        res.locals.status = { success: true, message: 'Successful Login' }
+        return next();
+    }
+    res.locals.status = { success: false, message: 'Invalid username or password' }
+    return next()
 
-    return next();
   } catch (error) {
     return next({
       log: 'Express error in userController.loginUser middleware',
@@ -90,3 +99,5 @@ userController.loginUser = async (req, res, next) => {
     });
   }
 };
+
+module.exports = userController;
