@@ -8,6 +8,7 @@ const Post = ( {petObj} ) => {
   //petObj will be a giant object with key value pairs of:
       // _id (req), pet_name (req), owner, address, 
       //eye_color, gender, image_url, fur_color, last_found, comments
+  console.log(petObj);
   const addPetData = usePetUpdateContext();
 
   function loadImg(url) {
@@ -22,7 +23,7 @@ const Post = ( {petObj} ) => {
       <h4 className="header4"><span className="petName">{petObj.pet_name.toUpperCase()}</span> is lost!</h4>
       <div className="petPic">{loadImg(petObj.image_url)}</div>
       <div className="info">
-        <p>Pet is a <b>{petObj.gender.toUpperCase()} {petObj.type.toUpperCase()}</b></p> {/* put type in line 15 or here? */}
+        <p>Pet is a <b>{petObj.gender.toUpperCase()} {petObj.breed.toUpperCase()}</b></p> {/* put type in line 15 or here? */}
         <p>Has <b>{petObj.fur_color.toUpperCase()}</b> colored fur</p>
         <p>Has <b>{petObj.eye_color.toUpperCase()}</b> colored eyes</p>
         <p>Was last seen at? <b>{petObj.last_found.toUpperCase()}</b></p>

@@ -104,7 +104,7 @@ const CreatePost = () => {
         <h4>Pet's Information</h4>
         <div className="create-post-inputs">
         {inputDiv('Name:', 'pet_name', true)}
-        {inputDiv('Breed:', 'type', true)}
+        {inputDiv('Breed:', 'breed', true)}
         {inputDiv('Fur Color:', 'fur_color')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
@@ -113,7 +113,7 @@ const CreatePost = () => {
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
 
-        <div className="create-post-submit">
+        <div className="create-post-submit"> 
           <Button
             size="large"
             variant="contained"
@@ -152,7 +152,7 @@ const CreatePost = () => {
 //make a petData a function that returns an Object with all the data from the input fields of the DOM
 //make sure he data is formatted with correct key value pairs
 //NOTE: make sure elements of dataKey match with the second param of inputDiv
-const dataKeys = ['pet_name', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
+const dataKeys = ['pet_name', 'breed', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
 const petData = () => {
   const dataObj = {}
 
