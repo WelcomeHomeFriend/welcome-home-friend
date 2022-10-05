@@ -24,7 +24,7 @@ body {
   /* position: absolute;
   z-index: 1;
   box-shadow: 0px 0px 10px rgb(0, 0, 0); */
-  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.13) );
+  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.13));
 }
 
 #navbar-logo img {
@@ -51,6 +51,7 @@ body {
 }
 
 .sidebar-container {
+  grid-area: 1 / 1 / 6 / 2;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -110,7 +111,7 @@ body {
 .featured-pet-details {
   margin-top: 30px;
   width: 85%;
-  background-color:rgba(238, 217, 113, 0.801);
+  background-color: rgba(238, 217, 113, 0.801);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -133,6 +134,7 @@ body {
 
 .post-container {
   background-color: rgb(255, 255, 255);
+  grid-area: 3 / 2 / 6 / 6;
 }
 
 .center-text {
@@ -151,11 +153,11 @@ body {
   box-shadow: 0px 1px 10px 1px rgb(117, 117, 117);
 }
 
-.post { 
-  background-color:#EED971FF;
+.post {
+  background-color: #EED971FF;
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(73, 73, 73, 0.5);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(73, 73, 73, 0.5);
 }
 
 .header4 {
@@ -163,7 +165,7 @@ body {
 }
 
 .petName {
- font-size: 20px; 
+  font-size: 20px;
 }
 
 .lost-pet-pic {
@@ -172,7 +174,7 @@ body {
   border: 1px solid black;
 }
 
-.petPic{
+.petPic {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,7 +195,7 @@ body {
 }
 
 .found-button {
-  display:flex;
+  display: flex;
   position: relative;
   justify-content: center;
 }
@@ -203,6 +205,11 @@ body {
   bottom: 0;
 }
 
-#modal-modal-description{
+.user-container {
+  grid-area: 1 / 2 / 3 / 6;
+  background-color: rgb(255, 255, 255);
+}
+
+#modal-modal-description {
   background-color: #FFBE7BFF;
 }

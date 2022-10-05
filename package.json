@@ -47,6 +47,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@mui/material": "^5.10.7",
     "@react-google-maps/api": "^2.13.1",
     "axios": "^0.27.2",
@@ -56,6 +57,7 @@
     "pg-promise": "^10.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.1",
     "sass": "^1.55.0"
   }

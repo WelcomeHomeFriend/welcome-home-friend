@@ -3,12 +3,14 @@ import React from "react";
 import SidebarContainer from "./SidebarContainer.jsx";
 import PostContainer from "./PostContainer.jsx";
 import { PetDataProvider } from "../contexts/PostContext.jsx";
+import UserPostContainer from "./UserPostContainer.jsx";
 
 const ContentContainer = () => {
     return (
         <PetDataProvider>
             <div className="content-container">
                 <SidebarContainer />
+                <UserPostContainer />
                 <PostContainer />
             </div>
         </PetDataProvider>
@@ -16,3 +18,5 @@ const ContentContainer = () => {
 }
 
 export default ContentContainer;
+
+// Google API key: AIzaSyBHLCkdnOimaN74IGqKOJrFAXslOygEJqI
