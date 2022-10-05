@@ -1,6 +1,7 @@
 /* import font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
 body {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -15,7 +16,7 @@ body {
 }
 
 .navbar-container {
-  background-image: linear-gradient(to right, #FFA351FF, #EED971FF, #FFA351FF);
+  background-image: linear-gradient(to right, #ffa351ff, #eed971ff, #ffa351ff);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -24,7 +25,7 @@ body {
   /* position: absolute;
   z-index: 1;
   box-shadow: 0px 0px 10px rgb(0, 0, 0); */
-  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.13) );
+  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.13));
 }
 
 #navbar-logo img {
@@ -37,7 +38,7 @@ body {
 }
 
 #login-button {
-  background-color: #EED971FF;
+  background-color: #eed971ff;
   color: black;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -110,7 +111,7 @@ body {
 .featured-pet-details {
   margin-top: 30px;
   width: 85%;
-  background-color:rgba(238, 217, 113, 0.801);
+  background-color: rgba(238, 217, 113, 0.801);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -151,11 +152,12 @@ body {
   box-shadow: 0px 1px 10px 1px rgb(117, 117, 117);
 }
 
-.post { 
-  background-color:#EED971FF;
+.post {
+  background-color: #eed971ff;
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(73, 73, 73, 0.5);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(73, 73, 73, 0.5);
 }
 
 .header4 {
@@ -163,7 +165,7 @@ body {
 }
 
 .petName {
- font-size: 20px; 
+  font-size: 20px;
 }
 
 .lost-pet-pic {
@@ -172,7 +174,7 @@ body {
   border: 1px solid black;
 }
 
-.petPic{
+.petPic {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,7 +195,7 @@ body {
 }
 
 .found-button {
-  display:flex;
+  display: flex;
   position: relative;
   justify-content: center;
 }
@@ -203,6 +205,6 @@ body {
   bottom: 0;
 }
 
-#modal-modal-description{
-  background-color: #FFBE7BFF;
+#modal-modal-description {
+  background-color: #ffbe7bff;
 }

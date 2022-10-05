@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx';
 import ContentContainer from './containers/ContentContainer.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
+import './';
 //import react router
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

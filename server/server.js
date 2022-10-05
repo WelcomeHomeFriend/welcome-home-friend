@@ -9,21 +9,20 @@ const apiRouter = require('./routes/api');
 const userRouter = require('./routes/userRouter');
 
 /*handle parsing request body*/
- app.use(express.json());
+app.use(express.json());
 //  app.use(express.urlencoded({ extended: true }));
 
- /*define route handlers*/
-  app.use('/api', apiRouter);
-  app.use('/user', userRouter);
+/*define route handlers*/
+app.use('/api', apiRouter);
+app.use('/user', userRouter);
 
-  // route for serving static html
-  app.use(express.static(path.join(__dirname, '../build')));
+// route for serving static html
+app.use(express.static(path.join(__dirname, '../build')));
 
-
-
-
- // catch-all route handler for any requests to an unknown route
- app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+// catch-all route handler for any requests to an unknown route
+app.use((req, res) =>
+  res.status(404).send("This is not the page you're looking for...")
+);
 
 //global error handler
 app.use((err, req, res, next) => {
@@ -38,6 +37,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost${PORT}...`)
-})
+  console.log(`Server is running at http://localhost${PORT}...`);
+});
 module.exports = app;

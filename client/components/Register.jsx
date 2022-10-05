@@ -3,22 +3,18 @@ import React from 'react';
 ///user/login
 
 export default function Register() {
-  const [userDetails, setUserDetails] = React.useState({
-    name: '',
-    username: '',
-    password: '',
-  });
-
+  const [name, setName] = React.useState('');
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
   //{ success: true , message: 'Account created'}
 
   function createAUser() {
-    console.log(userDetails);
     fetch('/user/signup', {
       method: 'POST',
       body: JSON.stringify({
-        name: userDetails.name,
-        username: userDetails.username,
-        password: userDetails.password,
+        name: name,
+        username: username,
+        password: password,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -31,25 +27,25 @@ export default function Register() {
   }
   return (
     <div>
-      <h2 class='registration'>Register</h2>
+      <h2 className='registration'>Register</h2>
       <form>
         <input
           type='text'
           title='name'
           placeholder='name'
-          onChange={(e) => setUserDetails({ name: e.target.value })}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type='text'
           title='username'
           placeholder='username'
-          onChange={(e) => setUserDetails({ username: e.target.value })}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type='password'
           title='username'
           placeholder='password'
-          onChange={(e) => setUserDetails({ password: e.target.value })}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <button type='submit' className='btn' onClick={createAUser}>
