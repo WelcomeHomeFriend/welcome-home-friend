@@ -1,16 +1,24 @@
-import React from "react";
+import React from 'react';
 //import child components/ containers
 import Navbar from './components/Navbar.jsx';
-import ContentContainer from './containers/ContentContainer.jsx'
-
+import ContentContainer from './containers/ContentContainer.jsx';
+import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
+import './';
+//import react router
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
-    return (
-        <div className="app-container">
-            <Navbar />
-            <ContentContainer />
-        </div>
-    )
-}
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route exact path='/' element={<ContentContainer />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
