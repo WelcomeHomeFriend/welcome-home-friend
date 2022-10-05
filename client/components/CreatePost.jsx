@@ -108,7 +108,7 @@ const CreatePost = () => {
       <h4>Pet's Information</h4>
       <div className="create-post-inputs">
         {inputDiv('Name:', 'pet_name', true)}
-        {inputDiv('Breed:', 'type', true)}
+        {inputDiv('Breed:', 'breed', true)}
         {inputDiv('Fur Color:', 'fur_color')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
@@ -116,6 +116,7 @@ const CreatePost = () => {
         {textAreaDiv('Last Known Location:', 'last_found')}
         {textAreaDiv('Additional Comments:', 'comments')}
       </div>
+
 
       <div className="create-post-submit">
         <Button
@@ -149,6 +150,7 @@ const CreatePost = () => {
       <div className="cat-divider">
         <img id="cat-divider" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de114712-7dca-4f5b-920a-8a7d7d75c452/de0jawd-5dcf5ace-2070-45d1-9511-9d6277d25180.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RlMTE0NzEyLTdkY2EtNGY1Yi05MjBhLThhN2Q3ZDc1YzQ1MlwvZGUwamF3ZC01ZGNmNWFjZS0yMDcwLTQ1ZDEtOTUxMS05ZDYyNzdkMjUxODAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.lDQR5USnXOaRH_Y0ijIykOzRbAO-9Zh3GlzdTvrY-Ms" />
       </div>
+
     </div>
   )
 }
@@ -156,7 +158,7 @@ const CreatePost = () => {
 //make a petData a function that returns an Object with all the data from the input fields of the DOM
 //make sure he data is formatted with correct key value pairs
 //NOTE: make sure elements of dataKey match with the second param of inputDiv
-const dataKeys = ['pet_name', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
+const dataKeys = ['pet_name', 'breed', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
 const petData = () => {
   const dataObj = {}
 

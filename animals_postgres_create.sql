@@ -11,16 +11,34 @@ SET row_security = off;
 
 CREATE TABLE public.animals (
 	"_id" serial NOT NULL,
+	"user_id" int NOT NULL,
 	"pet_name" varchar NOT NULL,
 	"owner" varchar,
 	"address" varchar,
 	"eye_color" varchar,
 	"gender" varchar,
 	"image_url" varchar,
+	"breed" varchar,
 	"fur_color" varchar,
 	"last_found" varchar,
+	"status" BOOLEAN NOT NULL,
+	"phone_number" int
 
 	CONSTRAINT "animals_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
+
+
+CREATE TABLE public.users (
+	"user_id" serial NOT NULL,
+	"username" varchar NOT NULL,
+	"password" varchar NOT NULL
+);
+
+
+CREATE TABLE public.sessions (
+  "session_id" SERIAL PRIMARY KEY,
+  "cookie"   VARCHAR,
+  "user_id"  INT
+)

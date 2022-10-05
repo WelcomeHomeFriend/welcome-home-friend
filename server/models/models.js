@@ -22,6 +22,7 @@ module.exports = {
     return pool.query(text, params, callback);
   }
 }
+
 // NOTES BELOW ON HOW TO GRAB DATA GENERALLY (NO DOTENV)
 // var pg = require('pg');
 // //or native libpq bindings
