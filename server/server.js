@@ -1,23 +1,24 @@
-const path = require('path');
-const express = require('express');
+const path = require("path");
+const express = require("express");
 const app = express();
 const PORT = 3000;
 // const cors = require('cors')  npm i cors later when dealing w cookies
 // const cookieParser = require('cookie-parser')
 
-const apiRouter = require('./routes/api');
-const userRouter = require('./routes/userRouter');
+// const apiRouter = require('./routes/api');
+const userRouter = require("./routes/userRouter");
+const postRouter = require("./routes/postRouter");
 
 /*handle parsing request body*/
 app.use(express.json());
 //  app.use(express.urlencoded({ extended: true }));
 
 /*define route handlers*/
-app.use('/api', apiRouter);
-app.use('/user', userRouter);
-
+// app.use('/api', apiRouter);
+app.use("/user", userRouter);
+app.use("/post", postRouter);
 // route for serving static html
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, "../build")));
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>
@@ -27,9 +28,9 @@ app.use((req, res) =>
 //global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: "Express error handler caught unknown middleware error",
     status: 500,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);

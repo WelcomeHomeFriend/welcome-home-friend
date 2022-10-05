@@ -78,7 +78,7 @@ userController.loginUser = async (req, res, next) => {
 
     // check to see if the password obtained from database is same as the one sent in req.body
     if (data.rows.length > 0) {
-      res.locals.status = { success: true, message: 'Successful Login' };
+      res.locals.status = { success: true, message: 'Successful Login', userId: data.rows[0]};
       return next();
     }
     res.locals.status = {
@@ -96,5 +96,6 @@ userController.loginUser = async (req, res, next) => {
     });
   }
 };
+
 
 module.exports = userController;
