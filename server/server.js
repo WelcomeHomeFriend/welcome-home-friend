@@ -41,7 +41,12 @@ const apiRouter = require('./routes/api');
  /**
   * define route handlers
   */
-  app.use('/api', apiRouter);
+
+app.use('/test', (req, res) => {
+  return res.status(200).send('testing!!')});
+
+
+app.use('/api', apiRouter);
 
  // catch-all route handler for any requests to an unknown route
  app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));

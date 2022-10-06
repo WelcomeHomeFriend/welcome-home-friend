@@ -21,6 +21,7 @@ CREATE TABLE public.users (
 	"location" varchar,
 	"oauth" varchar,
 	"pet" varchar,
+	"email" varchar,
 
 	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 );
