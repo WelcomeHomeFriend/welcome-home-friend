@@ -5,62 +5,80 @@ const db = require('../models/models');
 const { OAuth2Client } = require('google-auth-library')
 const client = new OAuth2Client(process.env.CLIENT_ID)
 
-console.log('inside userController')
 const userController = {};
 
 
-//verify the token ID
-userController.verifyTokenId = async (request, response, next) => {
-  console.log('inside verifyTokenId')
-  //Google sends us an id token to this route. 
-  //Grab it from the request body
-  const { token }  = request.body
-  console.log('this is the token', token);
-  //Now we go to google's servers and download it, and check that it's the same as was sent to us. 
-  const ticket = await client.verifyIdToken({
-    idToken: token,
-    audience: process.env.CLIENT_ID
-  });
-  //Assuming we're good, we get a payload of name, email, picture.
-  //We need more than this? See if we can get more than this. 
-  const payload = ticket.getPayload();
-  console.log('What is google telling people about me? ', payload);
-  const { name, email, picture } = payload;
-  //add those to request.locals.userDetails
-  request.locals.name = name;
-  request.locals.email = email;
-  request.locals.picture = picture;
-  return next();
 
-}
+//Check to see if the user is already in the DB, using email. 
+userController.checkDb = async (request, response, next) => {
+  //Need to get email into the select statement, but it's being weird about double quotes, doing this to strip double quotes off it. 
+  const checkEmail = request.body.email
+  const emailWithoutQuotes = checkEmail.replaceAll('"', '')
 
+
+  // If there's an already existing entry in the DB with that email....
+  const alreadyExistingUser = await db.query(`SELECT * FROM "public"."users" WHERE email = '${emailWithoutQuotes}'`);
+
+
+  //Notes on the reply....
+  // this is the alreadyExistingUser Result {
+    //   [0]   command: 'SELECT',
+    //   [0]   rowCount: 0,
+    //   [0]   oid: null,
+    //   [0]   rows: [],
+
+    //alreadyExistingUser is an object of class Result. We don't put Result in when indexing. Should be alreadyExistingUser.rowCount.
+
+  
+  if (alreadyExistingUser.rowCount === 0) {
+    console.log('user doesn\'t exist in our DB')
+    response.locals.alreadyExists = false;
+
+  }else{
+    console.log('User exists, loading DB information onto response to client for loading into state')
+    response.locals.user = alreadyExistingUser.rows;
+    response.locals.alreadyExists = true;
+  }
+
+  return next()
+
+} //end checkDb
+
+
+// IF the user isn't already in the DB...
 //add the user details to the database and send back to client. 
+//user details are in the body. .email   .family_name    .given_name    .name   .picture
 //Also, add a session cookie. 
 userController.addToDb = async (request, response, next) => {
-  console.log('inside addToDb')
-  const insertChar ="INSERT INTO users (_id, first_name, last_name, address, username, location, oauth, pet, email)"
-  const first_name = request.locals.name;
-  const last_name = request.locals.name;
-  const email = request.locals.email;
-  const VALUES = [DEFAULT, first_name, last_name, " ", " ", " ", " ", " ", email];
+  
+  //Add user to DB if response.locals.alreadyExists is false. 
+  if(response.locals.alreadyExists === false){
 
-  const user = await db.query(insertChar, VALUES, (err, result)=>{
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("result", result.rows[0]);
-    // if we want to return single row inserted, uncomment below
-    res.locals.user = result.rows;
-    }
-  })
+    //setting up SQL query
+    const insertChar = `
+    INSERT INTO users (_id, first_name, last_name, address, username, location, oauth, pet, email) 
+    VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8) 
+    RETURNING *`
 
-  request.session.userId = user._id //off the DB? 
-  return next();
-
-}
+    const first_name = request.body.given_name;
+    const last_name = request.body.family_name;
+    const email = request.body.email;
+    const VALUES = [first_name, last_name, " ", " ", " ", " ", " ", email];
 
 
-
-
+    const user = await db.query(insertChar, VALUES, (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("\n\n result of adding to DB", result.rows[0], "\n\n");
+        // if we want to return single row inserted, uncomment below
+        response.locals.user = result.rows;
+        return next();
+      }
+    })
+  }else{
+    return next();
+  }
+} //end addToDb
 
 module.exports = userController;
