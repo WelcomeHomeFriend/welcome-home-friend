@@ -213,3 +213,32 @@ body {
   width: 1000px;
   /* background-color: aquamarine; */
 }
+
+#navbar-login {
+  display: flex;
+  align-items: center;
+}
+
+.signInDisplay {
+  display: flex;
+  align-items: center;
+}
+
+.signInDisplay > img {
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 20%;
+  width: 30px;
+}
+
+.sign-out-button {
+  background-color: #EED971FF;
+  color: black;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+.sign-out-button:hover {
+  background-color: orange;
+  color: #222
+}
