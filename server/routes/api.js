@@ -38,9 +38,9 @@ router.post('/found',
 router.post('/userCreate',
     // holler,
     userController.checkDb,
-    holler,
+    // holler,
     userController.addToDb,
-    holler,
+    // holler,
     (req, res) => {
         return res.status(201).json(res.locals.user);
     });
