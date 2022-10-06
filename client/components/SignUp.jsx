@@ -12,7 +12,8 @@ const SignUp = () => {
         console.log(body);
         fetch('/api/signup', {
             method: 'POST',
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
+            headers: { "Content-Type": "application/json" }
         })
             .then(res => res.json())
             .then(data => {

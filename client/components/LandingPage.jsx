@@ -37,10 +37,10 @@ fetch(imageUrl)
 
 //<img src={require('/images/image-name.png')} />
 
-// const imagesPathsArray = [kobe, jinx, logo]
-const imagesPathsArray = ['../images/kobe.jpg',
-    '../images/jinx.jpg',
-    '../images/logo_navbar.png']
+const imagesPathsArray = [kobe, jinx, logo]
+// const imagesPathsArray = ['../images/kobe.jpg',
+//     '../images/jinx.jpg',
+//     '../images/logo_navbar.png']
 
 const CarouselImg = ({ imagesPaths }) => {
     // Map an array of 6 random photos 
@@ -48,7 +48,7 @@ const CarouselImg = ({ imagesPaths }) => {
         console.log(el)
         return (
             <div>
-                <img key={i} src={require(el)} width={'50px'} />
+                <img key={i} src={el} width={'50px'} />
                 <p className="legend"></p>
             </div>
         )
