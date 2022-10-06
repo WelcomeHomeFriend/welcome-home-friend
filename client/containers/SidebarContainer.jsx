@@ -7,7 +7,7 @@ const SidebarContainer = (props) => {
 
     return (
         <div className="sidebar-container">
-            <CreatePost handleChnageState={props.handleChangeState} handleChange={props.handleChange} />
+            <CreatePost />
             <FeaturedPets />
         </div>
     )

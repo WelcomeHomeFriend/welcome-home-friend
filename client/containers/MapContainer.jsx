@@ -16,16 +16,8 @@ const render = (status) => {
 const MapContainer = (props) => {
   console.log('MapContainer re-rendered')
   
-  // const options = {
-  //   position: {lat: 34.052, lng: -118.244}
-  // }
-
   const arrayOfCoordinates = [];
 
-  useEffect(() => {
-    populateCoordinates();
-  }, []);
-  
   // put all missing pets coordinates into an array
   const populateCoordinates = () => {
     for (let i=0; i<props.allPetData.length; i++) {
@@ -35,9 +27,8 @@ const MapContainer = (props) => {
       arrayOfCoordinates.push({lat: lat, lng: lng})
     }
   }
-  // render markers on initial render 
+  // render markers on initial render/ every re-render
   populateCoordinates();
-  console.log(arrayOfCoordinates)
 
   const arrayOfMarkers = [];
   // create Market component with the corresponding data and put them inside an array to be rendered 

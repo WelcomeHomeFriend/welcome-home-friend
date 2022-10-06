@@ -133,7 +133,7 @@ const CreatePost = (props) => {
             onClick={() => {
               // addPetData(petData())
               // fetch(postURL).then(whtvr).catch(handleerr)
-              
+
               fetch('/api/pet', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
@@ -142,9 +142,6 @@ const CreatePost = (props) => {
                 .then(res => res.json()) //then adding the pet to our state
                 .then((data) => {
                   addPetData(data)
-                  // handleChange
-                  let currentCount = props.handleChangeState.count + 1;
-                  props.handleChange(props.handleChangeState={count: currentCount})
                 })
                 .catch(err => console.log(err))
             }}
