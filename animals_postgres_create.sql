@@ -30,13 +30,17 @@ CREATE TABLE public.animals (
 	"_id" serial NOT NULL,
 	"pet_name" varchar NOT NULL,
 	"owner" varchar,
-	"address" varchar,
+	"street_address" varchar,
 	"eye_color" varchar,
 	"gender" varchar,
 	"image_url" varchar,
 	"fur_color" varchar,
 	"last_found" varchar,
 	"user_id" varchar,
+	"latitude" numeric,
+	"longitude" numeric,
+	"city" varchar,
+	"state" varchar,
 
 	CONSTRAINT "animals_pk" PRIMARY KEY ("_id")
 	FOREIGN KEY ("user_id") references public.users("_id")

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from "react";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -16,7 +16,7 @@ const style = {
   p: 4,
 }; 
 
-export default function BasicModal({ petObj }) {
+function MarkerModal({ petObj }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,15 +32,30 @@ export default function BasicModal({ petObj }) {
       >
         <Box sx={style}>
           <Typography style ={{textAlign: 'center'}} id="modal-modal-title" variant="h6" component="h2">
-            Help Find <b>{petObj.pet_name.toUpperCase()}</b>!
+            {/* Help Find <b>{petObj.pet_name.toUpperCase()}</b>! */}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           {/* <p>Contact owner at: <b>{petObj.phone_number.toUpperCase()}</b></p> */}
           {/* <p>Owner Address is: <b>{petObj.address.toUpperCase()}</b></p> */}
-          <p>Additional Comments: <b>{petObj.comments.toUpperCase()}</b></p>
+          {/* <p>Additional Comments: <b>{petObj.comments.toUpperCase()}</b></p> */}
           </Typography>
         </Box>
       </Modal>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default MarkerModal;

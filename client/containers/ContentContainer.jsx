@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 //import child components/ containers
 import SidebarContainer from "./SidebarContainer.jsx";
 import PostContainer from "./PostContainer.jsx";
 import { PetDataProvider } from "../contexts/PostContext.jsx";
 
 const ContentContainer = () => {
+
+
     return (
         <PetDataProvider>
             <div className="content-container">
-                <SidebarContainer />
+                <SidebarContainer/>
                 <PostContainer />
             </div>
         </PetDataProvider>

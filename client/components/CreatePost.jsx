@@ -3,7 +3,7 @@ import { usePetContext, usePetUpdateContext } from '../contexts/PostContext.jsx'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const addPetData = usePetUpdateContext();
   // const petDetails = usePetContext()
   // _id (req), pet_name (req), owner, address, eye_color, gender, image_url, fur_color, last_found, comments
@@ -104,12 +104,15 @@ const CreatePost = () => {
         <h4>Pet's Information</h4>
         <div className="create-post-inputs">
         {inputDiv('Name:', 'pet_name', true)}
-        {inputDiv('Breed:', 'type', true)}
+        {inputDiv('Breed:', 'breed', true)}
         {inputDiv('Fur Color:', 'fur_color')}
         {inputDiv('Eye Color:', 'eye_color')}
         {inputDiv('Gender:', 'gender')}
         {inputDiv('Pet Photo URL:', 'image_url',)}
-        {textAreaDiv('Last Known Location:', 'last_found')}
+        <h5>Last Known Location</h5> 
+        {textAreaDiv('Street Address:', 'street_address')}
+        {inputDiv('City:', 'city')}
+        {inputDiv('State:', 'state')}
         {textAreaDiv('Additional Comments:', 'comments')}
         </div>
 
@@ -126,17 +129,20 @@ const CreatePost = () => {
                 color: '#222'
               },
             }}
+            // THIS IS IMPORTANT!!!
             onClick={() => {
               // addPetData(petData())
               // fetch(postURL).then(whtvr).catch(handleerr)
-              
+
               fetch('/api/pet', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(petData())
               })
                 .then(res => res.json()) //then adding the pet to our state
-                .then(data => addPetData(data))
+                .then((data) => {
+                  addPetData(data)
+                })
                 .catch(err => console.log(err))
             }}
             >Submit Lost Pet
@@ -152,7 +158,7 @@ const CreatePost = () => {
 //make a petData a function that returns an Object with all the data from the input fields of the DOM
 //make sure he data is formatted with correct key value pairs
 //NOTE: make sure elements of dataKey match with the second param of inputDiv
-const dataKeys = ['pet_name', 'type', 'owner', 'address', 'eye_color', 'gender', 'image_url', 'fur_color', 'last_found', 'comments', 'phone_number']
+const dataKeys = ['pet_name', 'owner', 'eye_color', 'gender', 'image_url', 'fur_color', 'street_address', 'city', 'state', 'breed', 'comments']
 const petData = () => {
   const dataObj = {}
 
