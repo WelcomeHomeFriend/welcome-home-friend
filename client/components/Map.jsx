@@ -1,5 +1,5 @@
 // importing dependencies 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react"; 
 // probably also need to import React hooks as we go
 
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
@@ -11,6 +11,7 @@ import MarkerClusterer from "@googlemaps/markerclustererplus";
 const Map = (props) => {
   const ref = useRef(null);
   const [map, setMap] = useState();
+  console.log('map re-rendered')
 
 
   useEffect(() => {
@@ -32,9 +33,9 @@ const Map = (props) => {
     })}
 
     {/* This is a test div to determine difference if we included a hard coded div vs ref.current*/}
-    <div id="test" className='map-please'>
+    {/* <div id="test" className='map-please'>
   
-    </div>
+    </div> */}
     
   </div>
   )
