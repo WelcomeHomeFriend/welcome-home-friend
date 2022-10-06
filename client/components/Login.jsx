@@ -22,7 +22,13 @@ const Login = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: username.value, password: password.value })
         })
-            .then((data) => data.json())
+            .then((data) => {
+                console.log('data:', data);
+                if (data.status !== 200) {
+                    throw new Error("Invalid UserName or password");
+                }
+                return data.json();
+            })
             .then((json) => {
                 console.log(json);
                 navigate('/App');
