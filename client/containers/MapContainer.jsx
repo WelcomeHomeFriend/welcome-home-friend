@@ -1,11 +1,12 @@
 // importing dependencies 
-import React, { useEffect } from "react"; 
+import React, { useEffect, useState } from "react"; 
 // probably also need to import React hooks as we go
 
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 // importing files 
 import Map from '../components/Map.jsx';
 import Marker from "../components/Marker.jsx";
+import MarkerModal from "../components/MarkerModal.jsx";
 
 
 
@@ -15,7 +16,26 @@ const render = (status) => {
 
 const MapContainer = (props) => {
   console.log('MapContainer re-rendered')
+
+  const [selected, setSelected] = useState({});
+  const onSelect = item => {
+    setSelected(item);
+    infowindow.open({
+      anchor
+    })
+  }
+
+  // info window 
+  const contentString = 
+    '<div>' +
+      `<h1>${selected.pet_name}</h1>` +
+    '</div>';
   
+  // const infowindow = new window.google.maps.InfoWindow({
+  //   content: contentString
+  // })
+
+
   const arrayOfCoordinates = [];
 
   // put all missing pets coordinates into an array
@@ -34,7 +54,11 @@ const MapContainer = (props) => {
   // create Market component with the corresponding data and put them inside an array to be rendered 
   const getArray = () => {
     for (let i=0; i<arrayOfCoordinates.length; i++) {
-      arrayOfMarkers.push(<Marker position={arrayOfCoordinates[i]} />)
+      arrayOfMarkers.push(
+        <Marker position={arrayOfCoordinates[i]} petData={props.allPetData[i]} onClick={() => onSelect(props.allPetData[i])}>
+          {/* <MarkerModal petData={props.allPetData[i]} /> */}
+        </Marker>
+        )
     }
     return arrayOfMarkers
   }

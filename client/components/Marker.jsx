@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import MarkerModal from "./MarkerModal.jsx";
 
 const Marker = (options) => {
   const [marker, setMarker] = useState();
+  const [open, setOpen] = useState();
+
   console.log('Marker re-rendered')
 
   useEffect(() => {
@@ -25,8 +27,14 @@ const Marker = (options) => {
       marker.setOptions(options);
     }
   }, [marker, options]);
-   
-  return null;
+
+  // implementing open modal functionality 
+  const handleClick = () => {
+    
+  }
+  return (
+    <MarkerModal petData={options.petData} openState={open}/>
+  )
 };
 
 
