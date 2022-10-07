@@ -82,6 +82,7 @@ const Navbar = (props) => {
     <div className="navbar-container">
       <div id="navbar-logo">
         <img src={logo} alt="logo" />
+        {/* <img src="https://cdn.imgbin.com/5/14/12/imgbin-snake-sticker-wall-decal-paper-snake-UmuT9ib62xHV3S3dYAScJVP4n.jpg" alt="logo" /> */}
       </div>
       <div id="navbar-title">
         <img src={title} alt="title" />

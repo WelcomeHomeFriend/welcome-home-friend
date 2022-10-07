@@ -40,7 +40,7 @@ const CreatePost = (props) => {
               fontSize: '0.8rem',
             },
             '&:hover fieldset': {
-              borderColor: 'orange',
+              borderColor: '#B7DFB8',
             },
             '&.Mui-focused fieldset': {
               borderColor: '#333',
@@ -79,7 +79,7 @@ const CreatePost = (props) => {
               fontSize: '0.8rem',
             },
             '&:hover fieldset': {
-              borderColor: 'orange',
+              borderColor: '#B7DFB8',
             },
             '&.Mui-focused fieldset': {
               borderColor: '#333',
@@ -122,11 +122,11 @@ const CreatePost = (props) => {
             variant="contained"
             sx={{
               marginTop: '20px',
-              backgroundColor: '#EED971FF',
+              backgroundColor: '#4CAF50',
               color: 'black',
               '&:hover': {
-                backgroundColor: 'orange',
-                color: '#222'
+                backgroundColor: '#265728',
+                color: 'white'
               },
             }}
             // THIS IS IMPORTANT!!!
@@ -149,7 +149,8 @@ const CreatePost = (props) => {
             </Button>
         </div>
         <div className="cat-divider">
-        <img id="cat-divider" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de114712-7dca-4f5b-920a-8a7d7d75c452/de0jawd-5dcf5ace-2070-45d1-9511-9d6277d25180.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RlMTE0NzEyLTdkY2EtNGY1Yi05MjBhLThhN2Q3ZDc1YzQ1MlwvZGUwamF3ZC01ZGNmNWFjZS0yMDcwLTQ1ZDEtOTUxMS05ZDYyNzdkMjUxODAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.lDQR5USnXOaRH_Y0ijIykOzRbAO-9Zh3GlzdTvrY-Ms"/>
+        {/* <img id="cat-divider" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de114712-7dca-4f5b-920a-8a7d7d75c452/de0jawd-5dcf5ace-2070-45d1-9511-9d6277d25180.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RlMTE0NzEyLTdkY2EtNGY1Yi05MjBhLThhN2Q3ZDc1YzQ1MlwvZGUwamF3ZC01ZGNmNWFjZS0yMDcwLTQ1ZDEtOTUxMS05ZDYyNzdkMjUxODAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.lDQR5USnXOaRH_Y0ijIykOzRbAO-9Zh3GlzdTvrY-Ms"/> */}
+        <img id="cat-divider" src="https://media.baamboozle.com/uploads/images/271736/1652536602_473634_gif-url.gif"/>
         </div>
     </div>
   )

@@ -10,12 +10,14 @@ body {
 
 .content-container {
   background-color: rgb(242, 242, 242);
+  /* background-color: #DBEFDC; */
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
 
 .navbar-container {
-  background-image: linear-gradient(to right, #FFA351FF, #EED971FF, #FFA351FF);
+  /* background-image: linear-gradient(to right, #FFA351FF, #EED971FF, #FFA351FF); */
+  background-image: linear-gradient(to right, #3D8B40, #DBEFDC, #3D8B40);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -110,7 +112,8 @@ body {
 .featured-pet-details {
   margin-top: 30px;
   width: 85%;
-  background-color:rgba(238, 217, 113, 0.801);
+  /* background-color:rgba(238, 217, 113, 0.801); */
+  background-color: #B7DFB8;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -152,7 +155,8 @@ body {
 }
 
 .post { 
-  background-color:#EED971FF;
+  /* background-color:#EED971FF; */
+  background-color:#6EC071;
   padding: 10px;
   border-radius: 4px;
   box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(73, 73, 73, 0.5);
