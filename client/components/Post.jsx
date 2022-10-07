@@ -36,11 +36,11 @@ const Post = ( {petObj} ) => {
             variant="contained"
             sx={{
               marginTop: '20px',
-              backgroundColor: '',
-              color: 'white',
+              backgroundColor: '#DBEFDC',
+              color: 'black',
               '&:hover': {
-                backgroundColor: 'orange',
-                color: '#222'
+                backgroundColor: '#265728',
+                color: 'white'
               },
             }}
 
