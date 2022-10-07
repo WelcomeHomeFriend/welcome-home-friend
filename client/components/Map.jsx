@@ -10,28 +10,30 @@ import MarkerClusterer from "@googlemaps/markerclustererplus";
 
 const Map = (props) => {
   const ref = useRef(null);
-  const [map, setMap] = useState();
+  // const [map, setMap] = useState();
+
   console.log('map re-rendered')
 
 
   useEffect(() => {
-    if (ref.current && !map) {
+    if (ref.current && !props.map) {
       console.log('inside Map --- inside useEffect', ref, ref.current);
-      setMap(new window.google.maps.Map(ref.current, {center: props.center, zoom: props.zoom}));
+      props.setMap(new window.google.maps.Map(ref.current, {center: props.center, zoom: props.zoom}));
+
     }
-  }, [ref, map]);
+  }, [ref, props.map]);
 
   return (
   <div>
 
     <div ref={ref} className='map-please' />
     {/* passing the map state to each child component (<Marker/>) by cloning the children components while merging map into existing props (options) */}
-    {React.Children.map(props.arrayOfMarkers, (child) => {
+    {/* {React.Children.map(props.arrayOfMarkers, (child) => {
       if (React.isValidElement(child)) {
-        return React.cloneElement(child, { map: map });
+        return React.cloneElement(child, { map: props.map });
       }
-    })}
-
+    })} */}
+    {props.arrayOfMarkers}
     {/* This is a test div to determine difference if we included a hard coded div vs ref.current*/}
     {/* <div id="test" className='map-please'>
   

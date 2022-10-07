@@ -242,3 +242,42 @@ body {
   background-color: orange;
   color: #222
 }
+
+.info-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-image: linear-gradient(
+  180deg,
+  hsl(0deg 0% 100%) 0%,
+  hsl(87deg 56% 93%) 8%,
+  hsl(88deg 56% 86%) 17%,
+  hsl(88deg 55% 79%) 26%,
+  hsl(89deg 55% 72%) 35%,
+  hsl(90deg 55% 65%) 44%,
+  hsl(91deg 55% 58%) 52%,
+  hsl(90deg 55% 65%) 61%,
+  hsl(89deg 55% 72%) 69%,
+  hsl(88deg 55% 79%) 78%,
+  hsl(88deg 56% 86%) 86%,
+  hsl(87deg 56% 93%) 93%,
+  hsl(0deg 0% 100%) 100% ) */
+  /* background: radial-gradient(at 50%,green,rgb(227, 227, 200),white); */
+
+  /* box-shadow:  2px 0px 14px 5px rgba(87,255,53,0.88);  */
+}
+
+
+.pet-icons {
+  height: 150px;
+  width: auto;
+}
+
+.info-window h1 {
+  text-align: center;
+}
+
+.info-window h3 {
+  max-width: 200px;
+
+}
